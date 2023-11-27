@@ -15,10 +15,17 @@ use App\Http\Controllers\CityController;
 
 Route::get('/', [CustomerController::class, 'index'] );
 Route::get('/about-us', [CustomerController::class, 'aboutUs'] );
+Route::get('/board-members', [CustomerController::class, 'boardMembers'] );
+Route::get('/upcoming-events', [CustomerController::class, 'upcomingEvents'] );
+Route::get('/past-events', [CustomerController::class, 'pastEvents'] );
+Route::get('/faq', [CustomerController::class, 'faq'] );
+Route::get('/donation', [CustomerController::class, 'donation'] );
 Route::get('/contact-us', [CustomerController::class, 'contactUs'] );
 Route::post('/contact-submit', [CustomerController::class, 'contactSubmit'] );
 
+Route::get('/login', [CustomerLoginController::class, 'login'])->name('login');        
 Route::post('/login', [CustomerLoginController::class, 'customerLogin'])->name('customerLogin');
+Route::get('/register', [CustomerLoginController::class, 'register'])->name('register');        
 Route::post('/register', [CustomerLoginController::class, 'customerRegister'])->name('customerRegister');        
 Route::get('/customerLogout', [CustomerLoginController::class, 'customerLogout'])->name('userLogout');  
 

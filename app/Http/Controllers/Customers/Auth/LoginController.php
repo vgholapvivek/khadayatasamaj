@@ -36,6 +36,14 @@ class LoginController extends Controller
         $this->middleware('guest:web')->except('userLogout');
     }
 
+    public function login(){
+        return view('frontend.auth.login');
+    }
+
+    public function register(){
+        return view('frontend.auth.register');
+    }
+
     public function customerRegister(Request $request)
     {
         $customer = Customer::create([
