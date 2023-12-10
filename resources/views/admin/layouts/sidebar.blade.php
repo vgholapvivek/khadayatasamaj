@@ -15,7 +15,8 @@
                 <img src="{{ asset(get_from_setting('user_logo')) }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                
+                <a href="#" class="d-block">{{isset(auth()->user()->name)?auth()->user()->name:"" }}</a>
             </div>
         </div>
 

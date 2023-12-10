@@ -21,29 +21,12 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) 
-        {
-            if ($guard == "admin" && Auth::guard($guard)->check()) 
-            { 
-                return redirect('/admin/home');
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return redirect(RouteServiceProvider::HOME);
             }
-
-            if ($guard == "web" && Auth::guard($guard)->check()) 
-            {
-                return $next($request);
-            }
-            
-            if (Auth::guard($guard)->check()) 
-            {
-                return $next($request);
-            }
-            
-            return $next($request);
-
-            // if (Auth::guard($guard)->check()) 
-            // {
-            //     return redirect(RouteServiceProvider::HOME);
-            // }
         }
+
+        return $next($request);
     }
 }

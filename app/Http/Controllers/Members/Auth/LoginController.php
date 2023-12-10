@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Customers\Auth;
+namespace App\Http\Controllers\Members\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\Members;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:web')->except('userLogout');
+        $this->middleware('guest')->except('userLogout');
     }
 
     public function login(){
@@ -44,19 +44,16 @@ class LoginController extends Controller
         return view('frontend.auth.register');
     }
 
-    public function customerRegister(Request $request)
+    public function memberRegister(Request $request)
     {
-        $customer = Customer::create([
+        $member = Member::create([
             'name' => $request->name,
             'last_name'=>$request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
        
-        Auth::guard('web')->loginUsingId($customer->id);
-
-        // return redirect()->intended('/');
-        // return redirect()->back();
+       
         return response()->json(['status'=>1,'message'=>$customer->name."  Register Successfully !!"]);
     }
 
@@ -72,7 +69,7 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        if (Auth::guard('member')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
         {
             return response()->json(['status'=>1,'message'=>" Congratulations You Login Successfully !!"]);
         }
@@ -85,8 +82,12 @@ class LoginController extends Controller
     
     public function customerLogout(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::guard('member')->logout();
         return redirect('/');
+    }
+
+    public function registerThankyou(){
+        return view('frontend.auth.registerThankyou');
     }
     
 }

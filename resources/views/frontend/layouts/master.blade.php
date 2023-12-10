@@ -30,13 +30,22 @@
 <!-- animation -->
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/animate.css')}}">
 <!-- style -->
+@if(Auth::user())
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style2.css')}}">
+@else
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
+@endif
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}">
+@livewireStyles
 </head>
 
 <body class="home-1">
+    @if(Auth::user())
+        @include('frontend/includes/header1')
+    @else
     <!-- header start -->
-    @include('frontend/includes/header')
+        @include('frontend/includes/header')
+    @endif 
     <!-- header end -->
     @yield('content')
 
@@ -76,6 +85,7 @@
     <script src="{{asset('frontend/js/swiper.min.js')}}"></script>
     <!-- custom -->
     <script src="{{asset('frontend/js/custom.js')}}"></script>
+    @livewireScripts
     @yield('scripts')
 </body>
 </html>

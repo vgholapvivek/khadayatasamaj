@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Customers;
+namespace App\Http\Controllers\Members;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
 
 class HomeController extends Controller
 { 
@@ -48,4 +47,6 @@ class HomeController extends Controller
     {
         return view('frontend/contact-us');
     }
+
 }
+

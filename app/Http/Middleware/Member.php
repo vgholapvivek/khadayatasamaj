@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Auth;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class Member
 {
     /**
      * Handle an incoming request.
