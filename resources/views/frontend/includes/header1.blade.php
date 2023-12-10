@@ -1,5 +1,3 @@
-<?php include('config.php');?>
-<!-- header start -->
 <header class="header-area">
         <div class="container">
             <div class="row">
@@ -7,8 +5,8 @@
                     <div class="headr-khadayata">
                         <!-- logo start -->
                         <div class="header-element logo">
-                            <a href="{{url('/')}}">
-                                <img src="{{asset('frontend/images/logo.webp')}}" alt="logo-image" class="img-fluid">
+                            <a href="{{url('index')}}">
+                                <img src="{{url('frontend/images/logo.webp')}}" alt="logo-image" class="img-fluid">
                             </a>
                         </div>
                         <!-- logo end -->
@@ -62,47 +60,47 @@
                                             <div class="mainwrap">
                                                 <ul class="main-menu">
                                                     <li class="menu-link">
-                                                        <a href="dashboard.php" class="link-title">
+                                                        <a href="{{url('dashboard')}}" class="link-title">
                                                             <span class="sp-link-title">Dashboard</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="profile.php" class="link-title">
+                                                        <a href="{{url('profile')}}" class="link-title">
                                                             <span class="sp-link-title">Profile</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="message-board.php" class="link-title">
+                                                        <a href="{{url('message-board')}}" class="link-title">
                                                             <span class="sp-link-title">Message Board</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="connection.php" class="link-title">
+                                                        <a href="{{url('connection')}}" class="link-title">
                                                             <span class="sp-link-title">Connection</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="membership-plan.php" class="link-title">
+                                                        <a href="{{url('membership-plan')}}" class="link-title">
                                                             <span class="sp-link-title">Membership Plan</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="banners.php" class="link-title">
+                                                        <a href="{{url('banners')}}" class="link-title">
                                                             <span class="sp-link-title">Banners</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="invoices.php" class="link-title">
+                                                        <a href="{{url('invoices')}}" class="link-title">
                                                             <span class="sp-link-title">Invoices</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="suggestions.php" class="link-title">
+                                                        <a href="{{url('suggestions')}}" class="link-title">
                                                             <span class="sp-link-title">Suggestions</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="feedback.php" class="link-title">
+                                                        <a href="{{url('feedback')}}" class="link-title">
                                                             <span class="sp-link-title">Feedback</span>
                                                         </a>
                                                     </li>
@@ -112,7 +110,7 @@
                                     </div>
                                     <!-- menu end -->
                                     <div class="head-mom">
-                                        <a href="mom.php" class="btn btn-style21">MOM</a>
+                                        <a href="{{url('mom')}}" class="btn btn-style21">MOM</a>
                                     </div>
                                 </div>
                             </div>
@@ -141,53 +139,53 @@
                                     <div class="mainwrap">
                                         <ul class="main-menu">
                                             <li class="menu-link">
-                                                <a href="dashboard.php" class="link-title">
+                                                <a href="{{url('dashboard')}}" class="link-title">
                                                     <span class="sp-link-title">Dashboard</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="profile.php" class="link-title">
+                                                <a href="{{url('profile')}}" class="link-title">
                                                     <span class="sp-link-title">Profile</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="message-board.php" class="link-title">
+                                                <a href="{{url('message-board')}}" class="link-title">
                                                     <span class="sp-link-title">Message Board</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="connection.php" class="link-title">
+                                                <a href="{{url('connection')}}" class="link-title">
                                                     <span class="sp-link-title">Connection</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="membership-plan.php" class="link-title">
+                                                <a href="{{url('membership-plan')}}" class="link-title">
                                                     <span class="sp-link-title">Membership Plan</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="banners.php" class="link-title">
+                                                <a href="{{url('banners')}}" class="link-title">
                                                     <span class="sp-link-title">Banners</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="invoices.php" class="link-title">
+                                                <a href="{{url('invoices')}}" class="link-title">
                                                     <span class="sp-link-title">Invoices</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="suggestions.php" class="link-title">
+                                                <a href="{{url('suggestions')}}" class="link-title">
                                                     <span class="sp-link-title">Suggestions</span>
                                                 </a>
                                             </li>
                                             <li class="menu-link">
-                                                <a href="feedback.php" class="link-title">
+                                                <a href="{{url('feedback')}}" class="link-title">
                                                     <span class="sp-link-title">Feedback</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <div class="head-mom">
-                                                    <a href="mom.php" class="btn btn-style21">MOM</a>
+                                                    <a href="{{url('mom')}}" class="btn btn-style21">MOM</a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -202,3 +200,21 @@
         </div>
     </div>
     <!-- mobile menu end -->
+
+    <div class="dash-board">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="top-head-dash">
+                        <div class="header-dash">
+                            <h3>{{ucfirst(Request::segment(1))}}</h3>
+                        </div>
+                        <div class="dash-log">
+                            <a href="{{url('logout')}}" class="btn btn-style05">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
