@@ -1,0 +1,28 @@
+1 . php artisan db:seed --class="PermissionTableSeeder"
+
+2. for modal creation - php artisan make:model Test -a
+
+3. this will create controller , Model,Factory,Seeder,Request (for validation purpose),Policy (for permission purpose)
+
+
+4. in policy file we have to set permission like this
+        return $user->hasPermissionTo('city-viewAny');
+       only change city with the current permission name
+
+5. In request file we have to add validation -
+
+eg -  return [
+
+            'name' => 'required',
+            'value' => 'required'
+        ];
+
+6. In controller we have to add these lines compulsary - 
+    public function __construct()
+    {
+        $this->authorizeResource(City::class);
+    }        
+
+
+7. In web.php if we want to add particular route a permission then we have to write like this - 
+    Route::resource('users', UserController::class)->middleware('setting:view');

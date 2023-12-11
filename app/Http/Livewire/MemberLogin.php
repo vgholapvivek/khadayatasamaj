@@ -24,6 +24,7 @@ class MemberLogin extends Component
 
     public function login()
     {
+       
         $validatedDate = $this->validate([
             'email' => 'required|email',
             'password' => 'required',

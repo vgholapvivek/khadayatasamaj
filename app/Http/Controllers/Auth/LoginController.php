@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:auth')->except('logout');
+        $this->middleware('guest')->except('logout');
     }
 
     public function showLoginForm()
@@ -44,38 +44,12 @@ class LoginController extends Controller
         return view('admin/auth/login');
     }
 
-    public function loginsubmit(Request $request)
+    public function perform()
     {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required|min:6'
-        ]);
+        Session::flush();
+        
+        Auth::logout();
 
-        if (Auth::guard('auth')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
-        {
-            return redirect()->route('admin/dashboard');
-        }
-        else
-        {
-            return redirect()->back();
-        }
-        // return redirect()->intended('/'); 
-    }
-
-    public function logout(Request $request)
-    {
-        $this->guard()->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        if ($response = $this->loggedOut($request)) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-            ? new JsonResponse([], 204)
-            : redirect('/');
+        return redirect('admin/login');
     }
 }

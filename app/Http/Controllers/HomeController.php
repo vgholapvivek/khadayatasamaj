@@ -23,8 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd(auth()->user()->hasAnyPermission(['user-create', 'permission2']));
-        // statements 
         return view('admin/dashboard');
     }
 }
