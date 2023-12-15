@@ -29,6 +29,6 @@ Route::group(['prefix' => 'admin'], function ()
         Route::post('settings/update_records', [SettingController::class, 'update_records'])->name('update_records');
         Route::resource('settings', SettingController::class);
         Route::resource('cities', CityController::class);
-        Route::resource('adBanner1', AdBanner1Controller::class);
+        Route::resource('adbanner1', AdBanner1Controller::class);
     });
 });

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdBanner1Request;
 use App\Http\Requests\UpdateAdBanner1Request;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class AdBanner1Controller extends Controller
 {
@@ -26,13 +28,13 @@ class AdBanner1Controller extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $adBanner1 = AdBanner1::where('name', 'LIKE', "%$keyword%")
+            $adbanner1 = AdBanner1::where('name', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
         } else {
-            $adBanner1 = AdBanner1::latest()->paginate($perPage);
+            $adbanner1 = AdBanner1::latest()->paginate($perPage);
         }
 
-        return view('admin.adBanner1.index', compact('academic_years'));
+        return view('admin.adBanner1.index', compact('adbanner1'));
     }
 
     /**
@@ -54,6 +56,28 @@ class AdBanner1Controller extends Controller
     public function store(StoreAdBanner1Request $request)
     {
         $requestData = $request->all();
+        
+        if(!empty($request->banner)){
+            $folderPath = public_path('frontend/images/banner/');
+            if (!File::exists($folderPath)) {
+                File::makeDirectory($folderPath, $mode = 0777, true, true);
+            }      
+          
+            $imageName = $request->banner->getClientOriginalName();
+            $request->banner->move(public_path('frontend/images/banner/'), $imageName);
+            $requestData['banner'] = "frontend/images/banner/".$imageName;
+        }
+
+        if(!empty($request->mobile_banner)){
+            $folderPath = public_path('frontend/images/mobile_banner/');
+            if (!File::exists($folderPath)) {
+                File::makeDirectory($folderPath, $mode = 0777, true, true);
+            }      
+    
+            $imageName = $request->mobile_banner->getClientOriginalName();
+            $request->mobile_banner->move(public_path('frontend/images/mobile_banner/'), $imageName);
+            $requestData['mobile_banner'] = "frontend/images/mobile_banner/".$imageName ;
+        }
 
         AdBanner1::create($requestData);
 
@@ -68,7 +92,7 @@ class AdBanner1Controller extends Controller
      */
     public function show(AdBanner1 $adBanner1)
     {
-        return view('admin.adBanner1.show', compact('city'));
+        return view('admin.adBanner1.show', compact('adBanner1'));
     }
 
     /**
@@ -79,6 +103,8 @@ class AdBanner1Controller extends Controller
      */
     public function edit(AdBanner1 $adBanner1)
     {
+         dd($adBanner1);
+ 
         return view('admin.adBanner1.edit', compact('adBanner1'));
 
     }
@@ -93,8 +119,31 @@ class AdBanner1Controller extends Controller
     public function update(UpdateAdBanner1Request $request, AdBanner1 $adBanner1)
     {
         $requestData = $request->all();
+        $adBanner1 = AdBanner1::find($id);
 
-        $city ->update($requestData);
+        if(!empty($request->banner)){
+            $folderPath = public_path('frontend/images/banner/');
+            if (!File::exists($folderPath)) {
+                File::makeDirectory($folderPath, $mode = 0777, true, true);
+            }      
+          
+            $imageName = $request->banner->getClientOriginalName();
+            $request->banner->move(public_path('frontend/images/banner/'), $imageName);
+            $requestData['banner'] = "frontend/images/banner/".$imageName;
+        }
+
+        if(!empty($request->mobile_banner)){
+            $folderPath = public_path('frontend/images/mobile_banner/');
+            if (!File::exists($folderPath)) {
+                File::makeDirectory($folderPath, $mode = 0777, true, true);
+            }      
+    
+            $imageName = $request->mobile_banner->getClientOriginalName();
+            $request->mobile_banner->move(public_path('frontend/images/mobile_banner/'), $imageName);
+            $requestData['mobile_banner'] = "frontend/images/mobile_banner/".$imageName ;
+        }
+
+        $adBanner1->update($requestData);
 
         return redirect('admin/adBanner1')->with('success', 'Ad Banner1 updated!');
     }

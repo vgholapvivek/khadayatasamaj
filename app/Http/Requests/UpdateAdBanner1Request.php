@@ -24,8 +24,6 @@ class UpdateAdBanner1Request extends FormRequest
     public function rules()
     {
         return [
-            'banner' => 'required|image|max:2048',
-            'mobile_banner' => 'required|image|max:2048',
             'sequence' => 'required'
         ];
     }
