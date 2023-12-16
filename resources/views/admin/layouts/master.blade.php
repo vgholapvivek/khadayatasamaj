@@ -40,7 +40,7 @@
 
             <!-- Main Footer -->
             @include('admin/layouts/footer')
-            @include('sweetalert::alert')
+            
 
         </div>
         <!-- ./wrapper -->

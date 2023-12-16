@@ -5,7 +5,15 @@ use App\Http\Controllers\Members\MemberController;
 use App\Http\Controllers\Members\Auth\LoginController;
 use App\Http\Controllers\Members\HomeController;
 
+Route::get('/clear', function() {
 
+        Artisan::call('cache:clear');
+        Artisan::call('config:clear');
+        Artisan::call('config:cache');
+        Artisan::call('view:clear');
+        Artisan::call('route:clear');
+        Artisan::call('optimize:clear');
+});
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');        
 Route::post('/login', [LoginController::class, 'memberLogin'])->name('memberLogin');

@@ -12,15 +12,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CityController;
-use App\Http\Controllers\AdBanner1Controller;
+use App\Http\Controllers\AdBannerController;
 
-Route::get('admin/login', [LoginController::class, 'showLoginForm'])->name('admin/login');        
-Route::post('admin/login', [LoginController::class, 'loginsubmit']);
-Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin/logout');
-    
+Route::get('admin/logout', [LoginController::class, 'logout'])->name('admin_logout');
+
 Route::group(['prefix' => 'admin'], function () 
 {    
-    //Auth::routes();
+    Auth::routes();
     Route::group(['middleware' => ['auth']], function() 
     {
         Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -31,6 +29,6 @@ Route::group(['prefix' => 'admin'], function ()
         Route::post('settings/update_records', [SettingController::class, 'update_records'])->name('update_records');
         Route::resource('settings', SettingController::class);
         Route::resource('cities', CityController::class);
-        Route::resource('adBanner1', AdBanner1Controller::class);
+        Route::resource('adBanner', AdBannerController::class);
     });
 });

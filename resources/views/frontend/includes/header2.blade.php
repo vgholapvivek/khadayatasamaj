@@ -23,7 +23,7 @@
                                 <i class="fa fa-envelope"></i><a href="mailto:care@khadayatasamaj.in"> care@khadayatasamaj.in</a>
                             </div>
                             <div class="head-register">
-                                <h1>Welcome {{ucfirst(@Auth::user()->name)}}</h1>
+                                <h1>Welcome {{ucfirst(@Auth::guard('member')->user()->name)}}</h1>
                             </div>
                         </div>
                         <div class="header-main">

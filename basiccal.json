@@ -1,0 +1,101 @@
+{
+    "fields": [
+        {
+            "name": "preffered",
+            "type": "string"
+        },
+        {
+            "name": "transaction_date",
+            "type": "date"
+        },
+        {
+            "name": "shares",
+            "type": "string"
+        },
+        {
+            "name": "is_dividends",
+            "type": "select",
+            "options": {"1":"Yes", "0":"No"}
+        },
+        {
+            "name": "dividend_rate",
+            "type": "string"
+        },
+        {
+            "name": "dividend_compounding",
+            "type": "select",
+            "options": {"compounding":"Compounding", "simple":"Simple"}
+        },
+        {
+            "name": "issue_price",
+            "type": "double"
+        },
+        {
+            "name": "liquidation_priority",
+            "type": "integer"
+        },
+        {
+            "name": "liquidation_preference",
+            "type": "double"
+        },
+        {
+            "name": "participation_rights",
+            "type": "select",
+            "options":{"capped":"capped","fully_participating":"Fully Participating","non_participating":"Non Participating"}
+        },
+        {
+            "name": "participation_cap",
+            "type": "double"
+        },
+        {
+            "name": "conversion_ratio",
+            "type": "double"
+        },
+        {
+            "name": "preferred_warrant_shares",
+            "type": "integer"
+        },
+        {
+            "name": "warrrent_strike_price",
+            "type": "double"
+        },
+        {
+            "name": "input_currency",
+            "type": "string"
+        },
+        {
+            "name": "output_currency",
+            "type": "string"
+        },
+        {
+            "name": "exchange_rate",
+            "type": "double"
+        },
+        {
+            "name": "interest_compounding_per_year",
+            "type": "integer"
+        },
+        {
+            "name": "dividend_interest_year",
+            "type": "double"
+        },
+        {
+            "name": "total_dividends",
+            "type": "double"
+        },
+        {
+            "name": "liquidation_preference",
+            "type": "double"
+        },
+        {
+            "name": "breakpoint",
+            "type": "double"
+        },
+        {
+            "name": "status",
+            "type": "select",
+            "options": {"1":"Active", "0":"Disabled"}
+        }
+        
+    ]
+}

@@ -30,7 +30,7 @@
 <!-- animation -->
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/animate.css')}}">
 <!-- style -->
-@if(Auth::user())
+@if(Auth::guard('member')->user())
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style2.css')}}">
 @else
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
@@ -40,7 +40,7 @@
 </head>
 
 <body class="home-1">
-    @if(Auth::user())
+    @if(Auth::guard('member')->user())
         @include('frontend/includes/header1')
     @else
     <!-- header start -->

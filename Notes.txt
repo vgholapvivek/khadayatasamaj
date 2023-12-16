@@ -1,6 +1,0 @@
-add 	=>	.env
-cmd		=>	composer install
-key		=>	php artisan key:generate
-table 	=>	migrate :	php artisan migrate:refresh --seed
-admin	=>	admin@firsteconomy.com
-pass	=>	12345678
