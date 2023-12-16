@@ -35,16 +35,17 @@
 @else
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
 @endif
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}">
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}"> -->
+@if(Request::segment(1)=='register' || Request::segment(1)=='login')
 @livewireStyles
+@endif
 </head>
 
 <body class="home-1">
     @if(Auth::guard('member')->user())
         @include('frontend/includes/header1')
     @else
-    <!-- header start -->
-        @include('frontend/includes/header')
+           @include('frontend/includes/header')
     @endif 
     <!-- header end -->
     @yield('content')
@@ -85,7 +86,9 @@
     <script src="{{asset('frontend/js/swiper.min.js')}}"></script>
     <!-- custom -->
     <script src="{{asset('frontend/js/custom.js')}}"></script>
+    @if(Request::segment(1)=='register' || Request::segment(1)=='login')
     @livewireScripts
+    @endif
     @yield('scripts')
 </body>
 </html>

@@ -136,7 +136,7 @@
       </li> --}}
 
        <li class="nav-item">
-        <a class="nav-link"href="{{ route('logout') }}" >
+        <a class="nav-link"href="{{ url('admin/logout') }}" >
           <i class="fas fa-sign-out-alt"></i>
         </a>
       </li>

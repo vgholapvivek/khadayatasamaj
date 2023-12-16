@@ -1,20 +1,5 @@
-<div>
-    <div class="row">
-        <div class="col-md-12">
-            @if (session()->has('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
-            @if (session()->has('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
-        </div>
-    </div>
-
-        <form class="form-signin" wire:submit.prevent="submit" method="post">
+<form class="form-signin" wire:submit.prevent="submit" method="post">
+    @csrf
                     <h2 class="form-heading text-center">
                          Member Login
                     </h2>
@@ -34,12 +19,23 @@
                     </div>
                 </div>
                 <div class="col-md-12 text-center">
-                    <button class="btn btn-lg btn-dark btn-block" wire:click.prevent="login">Login</button>
+                    <input type="submit" class="btn btn-lg btn-dark btn-block" wire:click.prevent="login" value="Login">
                 </div>
                 <div class="log-register">
                    <p>Don't have account? <a wire:click.prevent="register"><u>Create an account?</u></a></p>
                 </div>
             </div>
+            <div class="col-md-12">
+                            @if (session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
+                            @if (session()->has('error'))
+                                <div class="alert alert-danger">
+                                    {{ session('error') }}
+                                </div>
+                            @endif
+                    </div>
         </form>
     
-</div>

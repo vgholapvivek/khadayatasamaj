@@ -21,6 +21,7 @@ class MemberRegistration extends Component
     }
     public function submit()
     {
+          
         $data = array();
         $validatedData = $this->validate([
             'membershipNo' => 'required|unique:members,membershipNo',
@@ -77,7 +78,7 @@ class MemberRegistration extends Component
 
     public function render()
     {
-       
+      
         // return view('livewire.member-registration');
         return view('livewire.member-registration');
     }

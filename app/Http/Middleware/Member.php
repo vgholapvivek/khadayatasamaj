@@ -18,8 +18,7 @@ class Member
     {
         //dd(Auth::guard('member')->check());
         if (Auth::guard('member')->check()) {
-            
-            return $next($request);
+           return $next($request);
         }
         return redirect('/login');
         

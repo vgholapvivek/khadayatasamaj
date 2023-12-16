@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -36,20 +37,38 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('web')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'email'   => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        {
+            return redirect('admin/home');
+        }
+        else
+        {
+            return redirect('admin/login');
+        }
+        // return redirect()->intended('/'); 
+    }
+    
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('admin/login');
+    }
+
 
     public function showLoginForm()
     {
         return view('admin/auth/login');
     }
 
-    public function perform()
-    {
-        Session::flush();
-        
-        Auth::logout();
-
-        return redirect('admin/login');
-    }
+    
 }
