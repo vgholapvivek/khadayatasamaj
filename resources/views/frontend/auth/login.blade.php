@@ -49,9 +49,12 @@
     <section class="samaj-updates-section animate fadeInDown two">
         <div class="wrapper">
             <div class="container mt-4">
-               
-                @livewire('member-login')
-                
+            <div>
+                <div class="row">
+                    
+                </div>
+                    @livewire('member-login')
+            </div>    
 
 				
             </div> 

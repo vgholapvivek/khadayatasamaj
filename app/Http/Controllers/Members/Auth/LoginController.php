@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:member')->except('userLogout');
+        $this->middleware('guest:member')->except('memberLogout');
     }
 
     public function login(){
@@ -46,7 +46,8 @@ class LoginController extends Controller
 
     public function memberRegister(Request $request)
     {
-        $member = Member::create([
+       
+        $member = Members::create([
             'name' => $request->name,
             'last_name'=>$request->last_name,
             'email' => $request->email,
@@ -62,8 +63,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-    public function customerLogin(Request $request)
+    public function memberLogin(Request $request)
     {
+        dd('dd');
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
@@ -80,7 +82,7 @@ class LoginController extends Controller
         // return redirect()->intended('/'); 
     }
     
-    public function customerLogout(Request $request)
+    public function memberLogout(Request $request)
     {
         Auth::guard('member')->logout();
         return redirect('/');

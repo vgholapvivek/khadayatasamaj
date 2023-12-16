@@ -29,7 +29,7 @@ Route::get('/past-events', [HomeController::class, 'pastEvents'] );
 Route::get('/faq', [HomeController::class, 'faq'] );
 Route::get('/donation', [HomeController::class, 'donation'] );
 
-Route::group(['middleware' => ['member']], function() {       
+Route::group(['middleware' => ['member']], function() {     
         Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('dashboard');
         Route::get('/list-if-member-search', [MemberController::class, 'listIfMemberSearch'] );
         Route::get('/contact-us', [MemberController::class, 'contactUs'] );
