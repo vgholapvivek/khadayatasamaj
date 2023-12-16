@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class AdBanner1Seeder extends Seeder
+class AdBannerSeeder extends Seeder
 {
     /**
      * Run the database seeds.

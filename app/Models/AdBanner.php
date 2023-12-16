@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AdBanner1 extends Model
+class AdBanner extends Model
 {
     use HasFactory,SoftDeletes;
 

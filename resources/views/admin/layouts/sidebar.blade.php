@@ -51,9 +51,9 @@
               
                 <li class="nav-header">Master Section</li>
                 <li
-                    class="nav-item {{ request()->is('admin/cities*') || request()->is('admin/locations*') ? 'menu-open' : '' }} ">
+                    class="nav-item {{ request()->is('admin/adBanner*') ? 'menu-open' : '' }} ">
                     <a href="#"
-                        class="nav-link {{ request()->is('admin/cities*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-school"></i>
                         <p>
                             Masters
@@ -61,11 +61,11 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">                     
-                        @can('city-viewAny')
+                        @can('adBanner-viewAny')
                             <li class="nav-item">
-                                <a href="{{ url('admin/cities') }}" class="nav-link {{ request()->is('admin/cities*') ? 'active' : '' }}">
+                                <a href="{{ url('admin/adBanner') }}" class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
                                     <i class="fas fa-house-user nav-icon"></i>
-                                    <p>City/Village {{-- <span class="badge badge-info right">2</span> --}}</p>
+                                    <p>Ad Banners</p>
                                 </a>
                             </li>
                         @endcan

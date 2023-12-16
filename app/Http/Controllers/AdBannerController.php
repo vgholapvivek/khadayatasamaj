@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdBanner1;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAdBanner1Request;
-use App\Http\Requests\UpdateAdBanner1Request;
+use App\Models\AdBanner;
+use App\Http\Requests\StoreAdBannerRequest;
+use App\Http\Requests\UpdateAdBannerRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use File;
 
-
-class AdBanner1Controller extends Controller
+class AdBannerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,12 @@ class AdBanner1Controller extends Controller
      */
     public function __construct()
     {
-        $this->authorizeResource(AdBanner1::class);
-    }        
+        //$this->authorizeResource(AdBanner::class);
+        $this->middleware('permission:adBanner-viewAny|adBanner-create|adBanner-edit|adBanner-delete', ['only' => ['index','store']]);
+         $this->middleware('permission:adBanner-create', ['only' => ['create','store']]);
+         $this->middleware('permission:adBanner-edit', ['only' => ['edit','update']]);
+         $this->middleware('permission:adBanner-delete', ['only' => ['destroy']]);
+    }   
 
     public function index(Request $request)
     {
@@ -28,13 +30,13 @@ class AdBanner1Controller extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $adbanner1 = AdBanner1::where('name', 'LIKE', "%$keyword%")
+            $adBanner = AdBanner::where('name', 'LIKE', "%$keyword%")
             ->latest()->paginate($perPage);
         } else {
-            $adbanner1 = AdBanner1::latest()->paginate($perPage);
+            $adBanner = AdBanner::latest()->paginate($perPage);
         }
 
-        return view('admin.adBanner1.index', compact('adbanner1'));
+       return view('admin.adBanners.index', compact('adBanner'));
     }
 
     /**
@@ -44,16 +46,16 @@ class AdBanner1Controller extends Controller
      */
     public function create()
     {
-        return view('admin.adBanner1.create');
+        return view('admin.adBanners.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAdBanner1Request  $request
+     * @param  \App\Http\Requests\StoreAdBannerRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdBanner1Request $request)
+    public function store(StoreAdBannerRequest $request)
     {
         $requestData = $request->all();
         
@@ -79,47 +81,44 @@ class AdBanner1Controller extends Controller
             $requestData['mobile_banner'] = "frontend/images/mobile_banner/".$imageName ;
         }
 
-        AdBanner1::create($requestData);
+        AdBanner::create($requestData);
 
-        return redirect('admin/adBanner1')->with('success', 'Ad Banner 1 added!');
+        return redirect('admin/adBanner')->with('success', 'Ad Banner added!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AdBanner1  $adBanner1
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Http\Response
      */
-    public function show(AdBanner1 $adBanner1)
+    public function show(AdBanner $adBanner)
     {
-        return view('admin.adBanner1.show', compact('adBanner1'));
+        return view('admin.adBanners.show', compact('adBanner'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AdBanner1  $adBanner1
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdBanner1 $adBanner1)
+    public function edit(AdBanner $adBanner)
     {
-         dd($adBanner1);
- 
-        return view('admin.adBanner1.edit', compact('adBanner1'));
-
+        return view('admin.adBanners.edit', compact('adBanner'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAdBanner1Request  $request
-     * @param  \App\Models\AdBanner1  $adBanner1
+     * @param  \App\Http\Requests\UpdateAdBannerRequest  $request
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAdBanner1Request $request, AdBanner1 $adBanner1)
+    public function update(UpdateAdBannerRequest $request, AdBanner $adBanner)
     {
         $requestData = $request->all();
-        $adBanner1 = AdBanner1::find($id);
+        //$adBanner1 = AdBanner::find($id);
 
         if(!empty($request->banner)){
             $folderPath = public_path('frontend/images/banner/');
@@ -143,20 +142,20 @@ class AdBanner1Controller extends Controller
             $requestData['mobile_banner'] = "frontend/images/mobile_banner/".$imageName ;
         }
 
-        $adBanner1->update($requestData);
+        $adBanner->update($requestData);
 
-        return redirect('admin/adBanner1')->with('success', 'Ad Banner1 updated!');
+        return redirect('admin/adBanner')->with('success', 'Ad Banner updated!');   
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AdBanner1  $adBanner1
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdBanner1 $adBanner1)
+    public function destroy(AdBanner $adBanner)
     {
-        $adBanner1 ->delete();
-        return redirect('admin/adBanner1')->with('success', 'Ad Banner1 deleted!');
+        $adBanner->delete();
+        return redirect('admin/adBanner')->with('success', 'Ad Banner deleted!');
     }
 }

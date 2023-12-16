@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAdBanner1Request extends FormRequest
+class StoreAd_Banner_OneRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class UpdateAdBanner1Request extends FormRequest
     public function rules()
     {
         return [
-            'sequence' => 'required'
+            'banner'=>'required',
+            'mobile_banner'=>'required',
+            'sequence'=>'required',
         ];
     }
 }

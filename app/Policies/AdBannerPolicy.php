@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use App\Models\First;
+use App\Models\AdBanner;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
-class FirstPolicy
+class AdBannerPolicy
 {
     use HandlesAuthorization;
 
@@ -19,20 +19,20 @@ class FirstPolicy
     public function viewAny(User $user)
     {
         //
-        return $user->hasPermissionTo('first-viewAny');
+        return $user->hasPermissionTo('adBanner-viewAny');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\First  $first
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, First $first)
+    public function view(User $user, AdBanner $adBanner)
     {
         //
-        return $user->hasPermissionTo('first-view');
+        return $user->hasPermissionTo('adBanner-view');
 
     }
 
@@ -45,7 +45,7 @@ class FirstPolicy
     public function create(User $user)
     {
         //
-        return $user->hasPermissionTo('first-create');
+        return $user->hasPermissionTo('adBanner-create');
 
     }
 
@@ -53,13 +53,13 @@ class FirstPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\First  $first
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, First $first)
+    public function update(User $user, AdBanner $adBanner)
     {
         //
-        return $user->hasPermissionTo('first-update');
+        return $user->hasPermissionTo('adBanner-update');
 
     }
 
@@ -67,13 +67,13 @@ class FirstPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\First  $first
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, First $first)
+    public function delete(User $user, AdBanner $adBanner)
     {
         //
-        return $user->hasPermissionTo('first-delete');
+        return $user->hasPermissionTo('adBanner-delete');
 
     }
 
@@ -81,13 +81,13 @@ class FirstPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\First  $first
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, First $first)
+    public function restore(User $user, AdBanner $adBanner)
     {
         //
-        return $user->hasPermissionTo('first-restore');
+        return $user->hasPermissionTo('adBanner-restore');
 
     }
 
@@ -95,13 +95,13 @@ class FirstPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\First  $first
+     * @param  \App\Models\AdBanner  $adBanner
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, First $first)
+    public function forceDelete(User $user, AdBanner $adBanner)
     {
         //
-        return $user->hasPermissionTo('first-forceDelete');
+        return $user->hasPermissionTo('adBanner-forceDelete');
 
     }
 }

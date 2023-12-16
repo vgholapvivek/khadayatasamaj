@@ -8,15 +8,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <!-- <h1>Student City/Village List</h1> -->
+                   
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('city-create')
+                        @can('adBanner1-create')
                             <div>
-                                <a href="{{  url('admin/adbanner1/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                                <a href="{{  url('admin/adBanner/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
-                                    Ad Banner1</a>
+                                    Banner</a>
                             </div>
                         @endcan
                     </ol>
@@ -31,10 +31,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Advertising Banner1 List</h3>
+                            <h3 class="card-title">Ad Banner List</h3>
 
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/adbanner1', 'role' => 'search'])  !!}
+                                    {!! Form::open(['method' => 'GET', 'url' => '/adBanner', 'role' => 'search'])  !!}
 
                                 <div class="input-group input-group-sm" style="width: 150px;">
 
@@ -62,15 +62,15 @@
                     </thead>
                     <tbody>
 
-                    @foreach($adbanner1 as $item)
+                    @foreach($adBanner as $item)
                             <tr>
-                                <td>{{ (($adbanner1->currentPage() - 1 ) * $adbanner1->perPage() ) + $loop->iteration }}</td>
+                                <td>{{ (($adBanner->currentPage() - 1 ) * $adBanner->perPage() ) + $loop->iteration }}</td>
                                 <td>@if($item->banner)<img src="{{ asset($item->banner) }}" style="width:30%" alt="Banner Image">@endif</td>
                                 <td>@if($item->mobile_banner)<img src="{{ asset($item->mobile_banner) }}" style="width:30%" alt="Mobile Banner Image">@endif</td>
                                 <td>{{ @$item->sequence }}</td>
                                 <td>
-                                    @can('adBanner1-edit')
-                                        <a href="{{ url('admin/adbanner1/' . $item->id . '/edit') }}" title="Edit City">
+                                    @can('adBanner-edit')
+                                        <a href="{{ url('admin/adBanner/' . $item->id . '/edit') }}" title="Edit City">
                                             <button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
                                         </a>
                                     @endcan
@@ -79,10 +79,12 @@
                     @endforeach
 
                 
+
+                
                         </tbody>
                         </table>
                            <br>
-                        <div class="pagination-wrapper"> {!! $adbanner1->appends(['search' => Request::get('search')])->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $adBanner->appends(['search' => Request::get('search')])->render() !!} </div>
 
                         </div>
                         <!-- /.card-body -->

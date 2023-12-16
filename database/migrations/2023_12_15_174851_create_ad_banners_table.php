@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdBanner1sTable extends Migration
+class CreateAdBannersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAdBanner1sTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad_banner1s', function (Blueprint $table) {
+        Schema::create('ad_banners', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateAdBanner1sTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ad_banner1s');
+        Schema::dropIfExists('ad_banners');
     }
 }
