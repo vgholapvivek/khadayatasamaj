@@ -16,13 +16,62 @@ class MemberController extends Controller
 
     public function dashboard()
     {
-        return view('frontend/dashboard');
+        return view('frontend.member.dashboard');
     }
 
-    
-    public function listIfMemberSearch()
+    public function profile()
     {
-        return view('frontend/list-if-members-search');
+        return view('frontend.member.profile');
+    }
+
+    public function messageBoard()
+    {
+        return view('frontend.member.message-board');
+    }
+
+    public function membershipPlan()
+    {
+        return view('frontend.member.connections');
+    }
+
+    public function banners()
+    {
+        return view('frontend.member.banners');
+    }
+
+    public function invoices()
+    {
+        return view('frontend.member.invoices');
+    }
+
+    public function suggestions()
+    {
+        return view('frontend.member.suggestions');
+    }
+
+    public function feedbacks()
+    {
+        return view('frontend.member.feedbacks');
+    }
+    
+    public function listOfMemberSearch()
+    {
+        return view('frontend.member.list-of-members-search');
+    }
+
+    public function jobs()
+    {
+        return view('frontend.member.jobs');
+    }
+
+    public function requirements()
+    {
+        return view('frontend.member.requirements');
+    }
+
+    public function achivements()
+    {
+        return view('frontend.member.achivements');
     }
 }
 

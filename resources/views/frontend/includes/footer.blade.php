@@ -7,7 +7,7 @@
                         <li class="footer-li footer-logo">
                             <div class="logo">
                                 <a href="index.php">
-                                    <img src="images/logo.webp" alt="logo-image" class="img-fluid">
+                                    <img src="/frontend/images/logo.webp" alt="logo-image" class="img-fluid">
                                 </a>
                             </div>
                             <div class="desc-area">
@@ -33,23 +33,23 @@
                             <h2 class="title">Our Links</h2>
                             <ul class="collapse2 menu-ul" id="title1">
                                 <li class="menu-li">
-                                    <a href="index.php">Home</a>
+                                    <a href="/">Home</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="about-us.php">About us</a>
+                                    <a href="/about-us">About us</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="board-members.php">Board Members</a> 
+                                    <a href="/board-members">Board Members</a> 
                                 </li>
                                 <!-- <li class="menu-li">
                                     <a href="updates.php">Updates</a>
                                 </li> -->
                                 <li class="menu-li">
-                                    <a href="upcoming-events.php">Upcoming Events</a>
+                                    <a href="/upcoming-events">Upcoming Events</a>
                                 </li>
                                 
                                 <li class="menu-li">
-                                    <a href="past-events.php">Past Events</a>
+                                    <a href="/past-events">Past Events</a>
                                 </li>
                                 
                                 <li class="menu-li">
@@ -72,31 +72,31 @@
                             <ul class="collapse2 menu-ul footer-links">
                                 
                                 <li class="menu-li">
-                                    <a href="list-if-members-search.php">List if Members / Search</a>
+                                    <a href="/list-if-members-search">List if Members / Search</a>
                                 </li>
                                 <!-- <li class="menu-li">
                                     <a href="how-to-become-a-member.php">How to Become a Member</a>
                                 </li> -->
                                 <li class="menu-li">
-                                    <a href="contact-us.php">Any Question Click Here</a>
+                                    <a href="/contact-us">Any Question Click Here</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="register.php">Membership Form and Fees</a>
+                                    <a href="/register">Membership Form and Fees</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="faq.php">Faq's</a>
+                                    <a href="/faq">Faq's</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="donation.php">Donation</a>
+                                    <a href="/donation">Donation</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="contact-us.php">Contact us</a>
+                                    <a href="/contact-us">Contact us</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="register.php">Register</a>
+                                    <a href="/register">Register</a>
                                 </li>
                                 <li class="menu-li">
-                                    <a href="login.php">Login</a>
+                                    <a href="/login">Login</a>
                                 </li>
                             </ul>
                         </li>

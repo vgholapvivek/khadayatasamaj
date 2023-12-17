@@ -71,16 +71,16 @@
                                                         </a>
                                                         <ul class="dropdown-submenu sub-menu collapse" id="collapse-page-menu">
                                                             <li class="submenu-li">
-                                                                <a href="{{url('login')}}" class="submenu-link">Achievements</a>
-                                                            </li>
-                                                            <li>                                                     <li class="submenu-li">
-                                                                <a href="{{url('login')}}" class="submenu-link">Jobs</a>
+                                                                <a href="{{@Auth::guard('member')->user() ? url('/achievements') : url('login')}}" class="submenu-link">Achievements</a>
                                                             </li>
                                                             <li class="submenu-li">
-                                                                <a href="{{url('login')}}" class="submenu-link">Requirements</a>
+                                                                <a href="{{@Auth::guard('member')->user() ? url('/jobs') : url('login')}}" class="submenu-link">Jobs</a>
                                                             </li>
                                                             <li class="submenu-li">
-                                                                <a href="{{url('login')}}" class="submenu-link">Matrimonials</a>
+                                                                <a href="{{@Auth::guard('member')->user() ? url('/requirements') : url('login')}}" class="submenu-link">Requirements</a>
+                                                            </li>
+                                                            <li class="submenu-li">
+                                                                <a href="{{@Auth::guard('member')->user() ? url('/matrimonials') : url('login')}}" class="submenu-link">Matrimonials</a>
                                                             </li>
                                                         </ul>
                                                     </li>
@@ -95,7 +95,7 @@
                                                         </a>
                                                         <ul class="dropdown-submenu sub-menu collapse" id="collapse-page-menu">
                                                             <li class="submenu-li">
-                                                                <a href="list-if-members-search.php" class="submenu-link">List if members /  Search</a>
+                                                                <a href="{{@Auth::guard('member')->user() ? url('/members-list') : url('login')}}" class="submenu-link">List of members /  Search</a>
                                                             </li>
                                                             <li class="submenu-li">
                                                                 <!-- <a href="how-to-become-a-member.php" class="submenu-link">How to Become a Member</a> -->
@@ -104,7 +104,7 @@
                                                                 <a href="{{url('contact-us')}}" class="submenu-link">Any Questions Click Here</a>
                                                             </li>
                                                             <li class="submenu-li">
-                                                                <a href="register.php" class="submenu-link">Membership form and Fees</a>
+                                                                <a href="/register" class="submenu-link">Membership form and Fees</a>
                                                             </li>
                                                         </ul>
                                                     </li>

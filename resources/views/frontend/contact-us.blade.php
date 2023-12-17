@@ -1,20 +1,21 @@
 @extends('frontend.layouts.master')
 @section('content')
-@section('title', 'board-members')
+@section('title', 'Contact Us')
 
+    <!--home page slider start-->
     <section class="khadayat-samaj-sponser animate fadeInUp one">
         <div class="banner-photo">
-            <img src="{{asset('frontend/images/donation1.webp')}}" class="img-fluid" alt="banner">
+            <img src="/frontend/images/contact.webp" class="img-fluid" alt="banner">
         </div>
         <div class="banner-photo-mob">
-            <img src="{{asset('frontend/images/donation1.webp')}}" class="img-fluid" alt="banner">
+            <img src="/frontend/images/contact.webp" class="img-fluid" alt="banner">
         </div>
     </section>
-    <!--home page slider start-->
+    <!--home page slider end-->
+
 
     @include('frontend.includes.shared.sponsers-banner')
 
-    <!-- Contact us of Khadayata Samaj section  --> 
     <section class="contact-us-section animate fadeInDown two">
         <div class="container">
             <div class="row">
@@ -23,12 +24,11 @@
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="contact_form_inner">
-                                    <div class="contact_field" style="padding: 60px 340px 255px 101px;">
-                                        <h3>Donate us</h3>
-                                        <p>Bank and NEFT Details will come here</p>
-                                        <form class="form" action="#" method="post">
+                                    <div class="contact_field">
+                                        <h3>Contact us</h3>
+                                        <form class="form" action="enquiry.php" method="post">
                                             <div class="row">
-                                                <!-- <div class="col-lg-12 col-md-12 col-12">
+                                                <div class="col-lg-12 col-md-12 col-12">
                                                     <div class="form-group">
                                                         <input class="form-control form-group" name="cf_name" required="" type="text" placeholder="Full name">
                                                     </div>
@@ -48,13 +48,13 @@
                                                     <div class="form-group">
                                                         <textarea class="form-control form-group" name="message" required="" placeholder="Write Your Message Here....."></textarea>
                                                     </div>
-                                                </div> -->
+                                                </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-5 col-md-4 col-12">
                                                     <div class="form-group">
                                                         <div class="button">
-                                                            <button class="contact_form_submit btn btn-style1" name="submit" type="submit" value="submit">Donate</button>
+                                                            <button class="contact_form_submit btn btn-style1" name="submit" type="submit" value="submit">Submit</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -95,7 +95,7 @@
         </div>
     </section>
     
-    <!-- <section class="map_sec">
+    <section class="map_sec">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
 
     @livewire('metrimonial-banner-list')    
 
