@@ -21,8 +21,8 @@
                                 <i class="fa fa-envelope"></i><a href="mailto:care@khadayatasamaj.in"> care@khadayatasamaj.in</a>
                             </div>
                             <div class="head-register">
-                                <a href="{{url('register')}}" class="btn btn-style2">Register</a>
-                                <a href="{{url('login')}}" class="btn btn-style2">Login</a>
+                                <a href="{{url('member/register')}}" class="btn btn-style2">Register</a>
+                                <a href="{{url('member/login')}}" class="btn btn-style2">Login</a>
                             </div>
                         </div>
                         <div class="header-main">

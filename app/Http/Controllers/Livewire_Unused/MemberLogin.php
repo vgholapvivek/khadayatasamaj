@@ -12,8 +12,7 @@ class MemberLogin extends Component
     public $users, $email, $password, $name;
     
     public function render()
-    {
-    
+    {    
         return view('livewire.member-login');
     }
 
