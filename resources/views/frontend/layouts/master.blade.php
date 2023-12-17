@@ -31,13 +31,15 @@
 <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/animate.css')}}">
 <!-- style -->
 @if(Auth::guard('member')->user())
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style2.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style2.css')}}">
 @else
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
 @endif
+
 <!-- <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}"> -->
-@if(Request::segment(1)=='register' || Request::segment(1)=='login')
-@livewireStyles
+
+@if(Request::segment(2)=='register' || Request::segment(2)=='login')
+    @livewireStyles
 @endif
 </head>
 
@@ -45,7 +47,7 @@
     @if(Auth::guard('member')->user())
         @include('frontend/includes/header1')
     @else
-           @include('frontend/includes/header')
+        @include('frontend/includes/header')
     @endif 
     <!-- header end -->
     @yield('content')
@@ -86,9 +88,11 @@
     <script src="{{asset('frontend/js/swiper.min.js')}}"></script>
     <!-- custom -->
     <script src="{{asset('frontend/js/custom.js')}}"></script>
-    @if(Request::segment(1)=='register' || Request::segment(1)=='login')
-    @livewireScripts
+
+    @if(Request::segment(2)=='register' || Request::segment(2)=='login')
+     @livewireScripts
     @endif
+    
     @yield('scripts')
 </body>
 </html>

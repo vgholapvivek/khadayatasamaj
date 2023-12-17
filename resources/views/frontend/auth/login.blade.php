@@ -35,8 +35,8 @@
     width: 100%;
 }
 </style>
-			    <!-- banner area 1 -->
-                <section class="khadayat-samaj-sponser animate fadeInLeft one">
+	 <!-- banner area 1 -->
+    <section class="khadayat-samaj-sponser animate fadeInLeft one">
         <div class="sponser-photo">
             <img src="{{asset('frontend/images/ad1.webp')}}" class="img-fluid" alt="ad1">
         </div>
@@ -49,9 +49,12 @@
     <section class="samaj-updates-section animate fadeInDown two">
         <div class="wrapper">
             <div class="container mt-4">
-            <div>
-                <div class="row">
+                <div>
+                    <div class="row">
+                        
+                    </div>
                     
+<<<<<<< HEAD
                 </div>
                     @include('frontend.member-login')
             </div>    
@@ -59,6 +62,11 @@
 				
             </div> 
             
+=======
+                    @livewire('member-login')
+                </div> 
+            </div>             
+>>>>>>> 8080368d3223e0032b67bb487ff6347a43d1e99f
         </div>
     </section>
 

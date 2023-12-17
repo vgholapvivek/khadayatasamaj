@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
-use App\Models\Members;
+use App\Models\Member;
 use Livewire\Component;
 use Illuminate\Http\Request;
 use Session;
@@ -42,15 +42,16 @@ class MemberRegistration extends Component
             'password' => 'required',
             'memberPhoto' => 'required', // 1MB Max
             'chb' => 'accepted',
-        ]);
-       
+        ]);       
 
-        try{  
-            if ($this->memberPhoto) {
-                
+        try
+        {  
+            if ($this->memberPhoto) 
+            {                
                     $path = public_path().'/sfrontend/images/members/';
                    
-                    if(!File::isDirectory($path)){
+                    if(!File::isDirectory($path))
+                    {
                         File::makeDirectory($path, 0777, true, true);
                     }   
                    
@@ -61,24 +62,23 @@ class MemberRegistration extends Component
             }
             
             $validatedData['password'] = Hash::make('password');
+            // $validatedData['status']   = 0;
            
-            if(Members::create($validatedData))
+            if(Member::create($validatedData))
             {
-                Members::create($data);
+                Member::create($data);
                 session()->flash('message', 'Member successfully registered.');
+                return view('livewire.member-registration');
             }
         }
         catch(\Exception $e)
-        {
-            
+        {            
             dd($e);
         }
     }
 
     public function render()
     {
-       
-        // return view('livewire.member-registration');
         return view('livewire.member-registration');
     }
 }

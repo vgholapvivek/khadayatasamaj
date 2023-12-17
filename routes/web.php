@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . '/member.php';
+
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
