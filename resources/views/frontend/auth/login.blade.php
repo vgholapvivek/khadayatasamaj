@@ -53,7 +53,7 @@
                 <div class="row">
                     
                 </div>
-                    @livewire('member-login')
+                    @include('frontend.member-login')
             </div>    
 
 				

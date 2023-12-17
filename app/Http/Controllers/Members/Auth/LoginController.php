@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:member')->except('memberLogout');
+        $this->middleware('member')->except('memberLogout');
     }
 
     public function login(){
@@ -44,20 +44,7 @@ class LoginController extends Controller
         return view('frontend.auth.register');
     }
 
-    public function memberRegister(Request $request)
-    {
-       
-        $member = Members::create([
-            'name' => $request->name,
-            'last_name'=>$request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-       
-       
-        return response()->json(['status'=>1,'message'=>$customer->name."  Register Successfully !!"]);
-    }
-
+    
     /**
      * Where to redirect users after login.
      *
@@ -65,13 +52,12 @@ class LoginController extends Controller
      */
     public function memberLogin(Request $request)
     {
-        dd('dd');
+        $requestData = $request->all();
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
-
-        if (Auth::guard('member')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        if(auth()->guard('member')->attempt(array('email' => $requestData['email'], 'password' => $requestData['password'])))
         {
             return response()->json(['status'=>1,'message'=>" Congratulations You Login Successfully !!"]);
         }

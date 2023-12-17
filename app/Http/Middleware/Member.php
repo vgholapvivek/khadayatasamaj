@@ -17,6 +17,7 @@ class Member
     public function handle(Request $request, Closure $next)
     {
         //dd(Auth::guard('member')->check());
+        dd(Auth::guard('member')->check());
         if (Auth::guard('member')->check()) {
            return $next($request);
         }

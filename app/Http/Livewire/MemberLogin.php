@@ -30,7 +30,7 @@ class MemberLogin extends Component
             'password' => 'required',
         ]);
         
-        if(Auth::attempt(['email' => $this->email, 'password' => $this->password])){ 
+        if(Auth::guard('member')->attempt(['email' => $this->email, 'password' => $this->password])){ 
                 return redirect('home');
         }else{
             session()->flash('error', 'email and password are wrong.');

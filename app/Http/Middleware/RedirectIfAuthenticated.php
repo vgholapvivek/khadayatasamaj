@@ -20,18 +20,19 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-       
-        foreach ($guards as $guard) {
 
-            if (Auth::guard($guard)->check()) 
-            {
-                 return $next($request);
-            }
-
-            return $next($request);
-
-        }
-
-        // return $next($request);
+        foreach ($guards as $guard) 
+        {
+            // dd($guard);
+                if ($guard == "web" && Auth::guard($guard) == 'web') {
+                    return redirect('/admin/home');
+                }
+        
+                if ($guard == 'member' && Auth::guard($guard) == 'member') {
+                    return redirect('/dashboard');
+                }
+            
+               // return $next($request);
+        }    
     }
 }
