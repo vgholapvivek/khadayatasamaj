@@ -56,7 +56,7 @@
                             <table class="table table-head-fixed text-nowrap">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Banner</th><th>Mobile Banner</th><th>Sequence</th><th>Actions</th>
+                            <th>#</th><th>Banner</th><th>Mobile Banner</th><th>Sequence</th><th>Section Type</th><th>User Type</th><th>Status</th><th>Actions</th>
 
                         </tr>
                     </thead>
@@ -68,6 +68,9 @@
                                 <td>@if($item->banner)<img src="{{ asset($item->banner) }}" style="width:30%" alt="Banner Image">@endif</td>
                                 <td>@if($item->mobile_banner)<img src="{{ asset($item->mobile_banner) }}" style="width:30%" alt="Mobile Banner Image">@endif</td>
                                 <td>{{ @$item->sequence }}</td>
+                                <td>{{@$item->banner_type}}</td>
+                                <td>{{@$item->type}}</td>
+                                <td>{{@$item->status}}</td>
                                 <td>
                                     @can('adBanner-edit')
                                         <a href="{{ url('admin/adBanner/' . $item->id . '/edit') }}" title="Edit City">

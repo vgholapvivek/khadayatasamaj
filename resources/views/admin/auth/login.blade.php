@@ -66,7 +66,7 @@
                 @error('password')
                     <p class="feedback">{{ $message }}</p>
                 @enderror
-                <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
+                <form class="login100-form validate-form" method="POST" action="{{ route('admin/login') }}">
                     @csrf
                     <div class="input-group mb-3">
                         <input name="email" type="email" class="form-control @error('email')  error @enderror "

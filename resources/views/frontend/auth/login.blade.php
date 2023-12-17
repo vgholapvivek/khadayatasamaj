@@ -54,19 +54,9 @@
                         
                     </div>
                     
-<<<<<<< HEAD
-                </div>
-                    @include('frontend.member-login')
-            </div>    
-
-				
-            </div> 
-            
-=======
                     @livewire('member-login')
                 </div> 
             </div>             
->>>>>>> 8080368d3223e0032b67bb487ff6347a43d1e99f
         </div>
     </section>
 

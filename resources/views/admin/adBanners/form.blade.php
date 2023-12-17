@@ -44,6 +44,55 @@
                 
         </div>
 </div>
+<div class="col-sm-6">
+        <div class="form-group {{ $errors->has('type') ? 'has-error' : ''}}">
+            <label>{{ 'User Type' }}</label>
+                <select class="form-control" name="type">
+                    <option value="admin"> Admin </option> 
+                    <option value="member">Member</option>
+                </select>                                    
+                @error('sequence')  
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                
+        </div>
+</div>
+
+<div class="col-sm-6">
+        <div class="form-group {{ $errors->has('banner_type') ? 'has-error' : ''}}">
+            <label>{{ 'Banner Type' }}</label>
+                <select class="form-control" name="banner_type">
+                    <option value="top_banner"> Top Banner </option> 
+                    <option value="middle_banner">Middle Banner</option>
+                    <option value="bottom_banner">Bottom Banner</option>
+                </select>                                    
+                @error('sequence')  
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                
+        </div>
+</div>
+
+<div class="col-sm-6">
+        <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
+            <label>{{ 'Status' }}</label>
+                <select class="form-control" name="status">
+                    <option value="0">Active</option> 
+                    <option value="1">Inactive</option>
+                    <option value="2">Approved</option>
+                </select>                                    
+                @error('sequence')  
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+                
+        </div>
+</div>
 
 <div class="row">
 

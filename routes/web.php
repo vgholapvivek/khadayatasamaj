@@ -13,13 +13,11 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AdBannerController;
 
-
-
 Route::group(['prefix' => 'admin'], function () 
 {    
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');        
-    Route::post('login', [LoginController::class, 'login'])->name('login');
+    Route::get('login', [LoginController::class, 'showLoginForm']);        
+    Route::post('login', [LoginController::class, 'login'])->name('admin/login');
     Route::group(['middleware' => ['auth']], function() 
     {
         
