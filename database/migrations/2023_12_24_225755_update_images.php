@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdBannersTable extends Migration
+class UpdateImages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateAdBannersTable extends Migration
      */
     public function up()
     {
-        Schema::create('ad_banners', function (Blueprint $table) {
+        Schema::create('update_images', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('event_id');
+            $table->string('event_image');
+            $table->string('mobile_event_image');
             $table->timestamps();
+            $table->foreign('event_id')->references('id')->on('updates')->onDelete('cascade');
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +31,6 @@ class CreateAdBannersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ad_banners');
+        Schema::dropIfExists('update_images');
     }
 }

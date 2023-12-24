@@ -15,15 +15,15 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $data = [
-            'adBanner-viewAny',
-            'adBanner-delete',
-            'adBanner-view',
-            'adBanner-edit',
-            'adBanner-create',
-            'adBanner-restore',
-            'adBanner-forceDelete',
-            'adBanner-update',
-            'adBanner-store',
+            'event-viewAny',
+            'event-delete',
+            'event-view',
+            'event-edit',
+            'event-create',
+            'event-restore',
+            'event-forceDelete',
+            'event-update',
+            'event-store',
 
         ];
 

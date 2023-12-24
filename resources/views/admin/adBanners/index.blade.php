@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('adBanner1-create')
+                        @can('adBanner-create')
                             <div>
                                 <a href="{{  url('admin/adBanner/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new
@@ -56,7 +56,8 @@
                             <table class="table table-head-fixed text-nowrap">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Banner</th><th>Mobile Banner</th><th>Sequence</th><th>Section Type</th><th>User Type</th><th>Status</th><th>Actions</th>
+                            <th>#</th><th>Banner</th><th>Mobile Banner</th><th>Sequence</th><th>Section Type</th><th>User Type</th><th>Status</th>
+                            <th>Member Banner Approval</th><th>Actions</th>
 
                         </tr>
                     </thead>
@@ -70,10 +71,31 @@
                                 <td>{{ @$item->sequence }}</td>
                                 <td>{{@$item->banner_type}}</td>
                                 <td>{{@$item->type}}</td>
-                                <td>{{@$item->status}}</td>
+                                <td>
+                                @if(!empty($item->status) && $item->status==0)
+                                  <lable class="badge badge-danger">{{@$item->statusflag->name}}</lable>
+                                @elseif(!empty($item->status) && $item->status==1)  
+                                  <lable class="badge badge-success">{{@$item->statusflag->name}}</lable>
+                                @elseif(!empty($item->status) && $item->status==2)  
+                                  <lable class="badge badge-black">{{@$item->statusflag->name}}</lable>  
+                                @else
+                                   {{'-'}}
+                                @endif
+                                </td>
+                                <td>
+                                    
+                                @if($item->member_status == 0)
+                                  <button class="approval btn-success btn submitBtn" page="AdBanner" onclick="submitForm({{$item->id}},'Approved')">{{'Approved'}}</button>
+                                  <button class="reject btn-danger btn submitBtn" page="AdBanner" onclick="submitForm({{$item->id,'Rejected'}})">{{'Reject'}}</button>
+                                 
+                                @else
+                                  <b>{{@$item->memberStatusflag->name}}</b>
+                                @endif
+                               
+                                </td>
                                 <td>
                                     @can('adBanner-edit')
-                                        <a href="{{ url('admin/adBanner/' . $item->id . '/edit') }}" title="Edit City">
+                                        <a href="{{ url('admin/adBanner/' . $item->id . '/edit') }}" title="Edit AdBanner">
                                             <button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
                                         </a>
                                     @endcan

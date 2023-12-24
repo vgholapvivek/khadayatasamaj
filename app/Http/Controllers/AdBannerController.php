@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdBanner;
+use App\Models\Status;
 use App\Http\Requests\StoreAdBannerRequest;
 use App\Http\Requests\UpdateAdBannerRequest;
 use Illuminate\Http\Request;
@@ -46,7 +47,10 @@ class AdBannerController extends Controller
      */
     public function create()
     {
-        return view('admin.adBanners.create');
+        $status = '';
+        $member_status = Status::whereNotNull('member_status')->pluck('name','id');
+        $status = Status::whereNotNull('admin_status')->pluck('name','id');
+        return view('admin.adBanners.create',compact('member_status','status'));
     }
 
     /**
@@ -105,7 +109,10 @@ class AdBannerController extends Controller
      */
     public function edit(AdBanner $adBanner)
     {
-        return view('admin.adBanners.edit', compact('adBanner'));
+        $status = '';
+        $member_status = Status::whereNotNull('member_status')->pluck('name','id');
+        $status = Status::whereNotNull('admin_status')->pluck('name','id');
+        return view('admin.adBanners.edit', compact('adBanner','member_status','status'));
     }
 
     /**

@@ -69,6 +69,47 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('blog-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/blog') }}" class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Khadya Samaj Update</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('testimonial-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/testimonial') }}" class="nav-link {{ request()->is('admin/testimonial*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Testimonial</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('achivementbymember-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/achivementbymember') }}" class="nav-link {{ request()->is('admin/aachivementbymemberdBanner*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Achivement By Member</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('job-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/job') }}" class="nav-link {{ request()->is('admin/job*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Job</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('requirement-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/requirement') }}" class="nav-link {{ request()->is('admin/requirement*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Requirement</p>
+                                </a>
+                            </li>
+                        @endcan
+                        
                     </ul>
                 </li>
 

@@ -12,4 +12,14 @@ class AdBanner extends Model
 
     protected $guarded = [];
 
+    public function statusflag()
+    {
+        return $this->belongsTo('App\Models\Status','admin_status','status');
+    }
+
+    public function memberStatusflag()
+    {
+        return $this->belongsTo('App\Models\Status','member_status',);
+    }
+
 }
