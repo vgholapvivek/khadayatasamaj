@@ -104,7 +104,7 @@
                                                                 <a href="{{url('contact-us')}}" class="submenu-link">Any Questions Click Here</a>
                                                             </li>
                                                             <li class="submenu-li">
-                                                                <a href="/register" class="submenu-link">Membership form and Fees</a>
+                                                                <a href="/member/register" class="submenu-link">Membership form and Fees</a>
                                                             </li>
                                                         </ul>
                                                     </li>

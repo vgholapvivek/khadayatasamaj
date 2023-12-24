@@ -21,16 +21,28 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="contact_inner">
+                        @if (\Session::has('error'))
+                            <div class="alert alert-danger" style="text-align: center">
+                                {{ \Session::get('error') }}
+                            </div>
+                        @endif
+                    
+                        @if (\Session::has('success'))
+                            <div class="alert alert-success" style="text-align: center">
+                                {{ \Session::get('success') }}
+                            </div>
+                        @endif
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="contact_form_inner">
                                     <div class="contact_field">
                                         <h3>Contact us</h3>
-                                        <form class="form" action="enquiry.php" method="post">
+                                        <form class="form" action="submit-contact" method="post">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-12">
                                                     <div class="form-group">
-                                                        <input class="form-control form-group" name="cf_name" required="" type="text" placeholder="Full name">
+                                                        <input class="form-control form-group" name="name" required="" type="text" placeholder="Full name">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 col-md-12 col-12">

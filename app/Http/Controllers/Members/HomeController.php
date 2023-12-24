@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Members;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Enquiry;
 
 class HomeController extends Controller
 { 
@@ -46,6 +47,23 @@ class HomeController extends Controller
     public function contactUs()
     {
         return view('frontend/contact-us');
+    }
+
+    public function submitContact(Request $request)
+    {   
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'mobile' => 'required',
+        ]);
+
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['mobile'] = $request->mobile;
+        $data['message'] = $request->message;
+        Enquiry::create($data);
+
+        return redirect('contact-us')->with('success', 'We have received your request, we will contact you shortly');
     }
 
 }

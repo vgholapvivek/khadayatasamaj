@@ -100,7 +100,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="{{url('/member/feedback')}}" class="link-title">
+                                                        <a href="{{url('/member/feedbacks')}}" class="link-title">
                                                             <span class="sp-link-title">Feedback</span>
                                                         </a>
                                                     </li>

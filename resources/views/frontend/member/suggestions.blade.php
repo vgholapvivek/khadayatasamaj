@@ -5,109 +5,64 @@
 
     @include('frontend.includes.shared.sponsers-banner')
 
-    <!-- History of Khadayata Samaj section  -->
+    <!-- Suggestions of Khadayata Samaj section  -->
     <section class="samaj-updates-section animate fadeInDown two">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="recent-update-ben">
-                        <div class="recent-details">
-                            <h4>Upcoming Events</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Vietnam Tour - 2023</h5>
-                            <p><b>Venue :</b> Vietnam</p>
-                            <p><b>Details:</b> 10 days Tours in May-2023</p>
-                            <!-- <p>Update details..</p> 
-                            <p>Date</p>
-                            <p>Content</p>
-                            <p>Download PDF</p> -->
-                        </div>
-                        <div class="update-thumb-photo">
-                            <div class="update-thumbnail">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger" style="text-align: center">
+                        {{ \Session::get('error') }}
+                    </div>
+                @endif
+            
+                @if (\Session::has('success'))
+                    <div class="alert alert-success" style="text-align: center">
+                        {{ \Session::get('success') }}
+                    </div>
+                @endif
+                <div class="col-md-12">
+                    <form method="post" action="/member/submit-suggestion">
+                        @csrf
+                        <div class="suggestion-section">
+                            <h4>Please give your suggestions for</h4>
+                            <div class="marital-form">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="type" id="flexRadioDefault1" checked value="Trust">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Trust 
+                                    </label>
+                                </div>
+                                <div class="form-check check2">
+                                    <input class="form-check-input" type="radio" name="type" id="flexRadioDefault2" value="Donation">
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Donation
+                                    </label>
+                                </div>
+                                <div class="form-check check2">
+                                    <input class="form-check-input" type="radio" name="type" id="flexRadioDefault3" value="Events">
+                                    <label class="form-check-label" for="flexRadioDefault3">
+                                        Events
+                                    </label>
+                                </div>
+                                <div class="form-check check2">
+                                    <input class="form-check-input" type="radio" name="type" id="flexRadioDefault4" value="Website">
+                                    <label class="form-check-label" for="flexRadioDefault4">
+                                        Website
+                                    </label>
+                                </div>
+                                <div class="form-check check2">
+                                    <input class="form-check-input" type="radio" name="type" id="flexRadioDefault5" value="Committee">
+                                    <label class="form-check-label" for="flexRadioDefault5">
+                                        Committee
+                                    </label>
+                                </div>
                             </div>
-                            <div class="update-thumbnail2">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
+                            <textarea name="message" id=""  rows="8" placeholder="Type your message here............" required></textarea>
+                            <div style="text-align: end;">
+                                <button type="submit" value="submit" class="btn2">Submit</button>
                             </div>
                         </div>
-
-                        <!-- <div class="recent-samaj-details">
-                            <h5>Update 02 Title</h5>
-                            <p>Update details..</p>
-                            <p>Date</p>
-                            <p>Content</p>
-                            <p>Download PDF</p>
-                        </div>
-                        <div class="update-thumb-photo">
-                            <div class="update-thumbnail">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                            <div class="update-thumbnail2">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                        </div> -->
-                    </div><br>
-                </div>
-                <div class="col-md-4">
-                    <div class="recent-update-ben2">
-                        <div class="recent-details">
-                            <h4>Member Connections</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-                    </div><br>
-                </div>
-                <div class="col-md-4">
-                    <div class="recent-update-ben3">
-                        <div class="recent-details">
-                            <h4>Guest Connections</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-                    </div><br>
+                    </form>
                 </div>
             </div>
         </div>

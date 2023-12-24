@@ -30,7 +30,7 @@
 <!-- animation -->
 <link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/animate.css')}}">
 <!-- style -->
-@if(Request::segment(1) == 'member')
+@if(Request::segment(1) == 'member' && Request::segment(2) != 'login' && Request::segment(2) != 'register')
     <link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/style2.css')}}">
 @else
     <link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/style.css')}}">
@@ -43,7 +43,7 @@
 </head>
 
 <body class="home-1">
-    @if(Request::segment(1) == 'member')
+    @if(Request::segment(1) == 'member' && Request::segment(2) != 'login' && Request::segment(2) != 'register')
         @include('frontend/includes/header1')
     @else
         @include('frontend/includes/header')

@@ -73,50 +73,7 @@
                 </div>
                 <!-- khadayata-Samaj update section end -->
 
-                <!-- khadayata-Samaj new member section start -->
-                <div class="col-md-6">
-                    <div class="samaj-name">
-                        <h2>Welcome Our New members</h2>
-                    </div>
-                    <div class="samaj-updates">
-                        <div class="col-md-2">
-                            <div class="samaj-members1">
-                                <img src="{{asset('frontend/images/rahul-vatat.webp')}}" class="img-fluid" alt="rahul-vatat">
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="samaj-members2">
-                                <h4>New Member Name 01</h4>
-                                <p>Member Details will come here</p>
-                        </div>
-                       </div>
-                        <div class="col-md-3">
-                            <div class="samaj-members3">
-                                <a href="#" class="btn btn-style1">Know More</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="samaj-updates">
-                        <div class="col-md-2">
-                            <div class="samaj-members1">
-                                <img src="{{asset('frontend/images/rahul-vatat.webp')}}" class="img-fluid" alt="rahul-vatat">
-                            </div>
-                        </div>
-                       <div class="col-md-7">
-                            <div class="samaj-members2">
-                                <h4>New Member Name 02</h4>
-                                <p>Member Details will come here</p>
-                        </div>
-                       </div>
-                       <div class="col-md-3">
-                            <div class="samaj-members3">
-                                <a href="#" class="btn btn-style1">Know More</a>
-                            </div>
-                       </div>
-                    </div>
-                </div>
-                <!-- khadayata-Samaj new member section end -->
+                @livewire('new-member-list')
             </div>
         </div>
     </section>
