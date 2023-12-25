@@ -12,6 +12,9 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AdBannerController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\SeatController;
+use App\Http\Controllers\EventBookingController;
 
 
 
@@ -32,5 +35,8 @@ Route::group(['prefix' => 'admin'], function ()
         Route::resource('settings', SettingController::class);
         Route::resource('cities', CityController::class);
         Route::resource('adBanner', AdBannerController::class);
+        Route::resource('seats', SeatController::class);
+        Route::resource('events', EventController::class);
+        Route::resource('event-bookings', EventBookingController::class);
     });
 });
