@@ -15,7 +15,7 @@
     <div class="col-sm-6">
         <div class="form-group {{ $errors->has('event_image') ? 'has-error' : ''}}">
             <label>{{ 'Event Image' }}</label>
-            <input name="event_image[]" value="{{ $event->event_image ?? old('event_image')}}"  type="file" class=" @error('event_image') is-invalid @enderror form-control">
+            <input name="event_image[]" multiple value="{{ $event->event_image ?? old('event_image')}}"  type="file" class=" @error('event_image') is-invalid @enderror form-control">
                                                     
             @error('event_image')  
                 <span class="invalid-feedback" role="alert">
@@ -32,7 +32,7 @@
     <div class="col-sm-6">
         <div class="form-group {{ $errors->has('mobile_event_image') ? 'has-error' : ''}}">
             <label>{{ 'Mobile Event Image' }}</label>
-            <input name="mobile_event_image" value="{{ $event->mobile_event_image ?? old('mobile_event_image')}}"  type="file" class=" @error('mobile_event_image') is-invalid @enderror form-control">
+            <input name="mobile_event_image[]" multiple value="{{ $event->mobile_event_image ?? old('mobile_event_image')}}"  type="file" class=" @error('mobile_event_image') is-invalid @enderror form-control">
                                                     
             @error('mobile_event_image')  
                 <span class="invalid-feedback" role="alert">

@@ -10,8 +10,8 @@ class Update extends Model
 {
     protected $guarded = []; // Add other fields as needed
      protected $table = 'updates';
-    public function eventImages()
-    {
-        return $this->hasMany(EventImage::class);
-    }
+     public function updateImages()
+     {
+         return $this->hasMany('App\Models\UpdateImage');
+     }
 }

@@ -69,9 +69,9 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('blog-viewAny')
+                        @can('event-viewAny')
                             <li class="nav-item">
-                                <a href="{{ url('admin/blog') }}" class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}">
+                                <a href="{{ url('admin/event') }}" class="nav-link {{ request()->is('admin/event*') ? 'active' : '' }}">
                                     <i class="fas fa-house-user nav-icon"></i>
                                     <p>Khadya Samaj Update</p>
                                 </a>
@@ -106,6 +106,15 @@
                                 <a href="{{ url('admin/requirement') }}" class="nav-link {{ request()->is('admin/requirement*') ? 'active' : '' }}">
                                     <i class="fas fa-house-user nav-icon"></i>
                                     <p>Requirement</p>
+                                </a>
+                            </li>
+                        @endcan
+
+                        @can('member-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/member') }}" class="nav-link {{ request()->is('admin/member*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Member List</p>
                                 </a>
                             </li>
                         @endcan

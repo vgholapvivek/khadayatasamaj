@@ -53,7 +53,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 600px;">
-                            <table class="table table-head-fixed text-nowrap">
+                            <table class="table table-head-fixed">
                                      <thead>
                         <tr>
                             <th>#</th><th>Membership No</th>
@@ -64,8 +64,13 @@
                             <th>Dob</th>
                             <th>Blood Group</th>
                             <th>Marital Status</th>
-                            <th>Actions</th>
-
+                            <th>Anniversary Date</th>
+                            <th>Pan No</th>
+                            <th>Address</th>
+                            <th>Native Place</th>
+                            <th>State</th>
+                            <th>Pin Code</th>
+                            <th>Member Photo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,8 +87,15 @@
                                 <td>{{ $item->dob  }}</td>
                                 <td>{{ $item->bloodGroup  }}</td>
                                 <td>{{ $item->maritalStatus  }}</td>
+                                <td>{{@$item->anniversaryDate}}</td>
+                                <td>{{@$item->panNo}}</td>
+                                <td>{{@$item->address}}</td>
+                                <td>{{@$item->nativePlace}}</td>
+                                <td>{{@$item->state}}</td>
+                                <td>{{@$item->pinCode}}</td>
+                                <td>@if($item->memberPhoto)<img src="{{ asset($item->memberPhoto) }}" style="width:50%" alt="Banner Image">@endif</td>
                                 <td>
-                                    @can('member-edit')
+                                    @can('member-edit1')
                                     <a href="{{ url('admin/member/' . $item->id . '/edit') }}" title="Edit Member"><button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button></a>
                                     @endcan
 

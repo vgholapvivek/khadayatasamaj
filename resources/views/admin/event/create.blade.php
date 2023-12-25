@@ -30,7 +30,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form method="POST" action="{{ url('admin/event') }}" enctype="multipart/form-data" multiple>
+                            <form method="POST" action="{{ url('admin/event') }}" enctype="multipart/form-data">
                                 
                                 {{ csrf_field() }}
                                 @include ('admin.event.form', ['formMode' => 'create'])

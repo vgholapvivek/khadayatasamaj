@@ -87,7 +87,11 @@ class MemberController extends Controller
      */
     public function update(UpdateMemberRequest $request, Member $member)
     {
-        //
+        $requestData = $request->all();
+
+        $member ->update($requestData);
+
+        return redirect('admin/member')->with('success', 'Member updated!');
     }
 
     /**
@@ -98,6 +102,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        $member->delete();
+        return redirect('admin/member')->with('success', 'Member deleted!');
     }
 }

@@ -52,10 +52,10 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 600px;">
-                            <table class="table table-head-fixed text-nowrap">
+                            <table class="table table-head-fixed">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Name</th><th>Event Image</th><th>Mobile Event Image</th><th>Venue</th><th>Details</th><th>Date</th><th>Total People In Event</th><th>Vip Guest Names</th><th>Sequence</th><th>Show In Homepage</th><th>User Type</th><th>Status</th>
+                            <th>#</th><th>Name</th><th>Event Image</th><th>Mobile Event Image</th><th>Venue</th><th>Details</th><th>Date</th><th>Total People In Event</th><th>Vip Guest Names</th><th>Sequence</th><th>Status</th>
                             <th>Actions</th>
 
                         </tr>
@@ -65,17 +65,15 @@
                     @foreach($event as $item)
                             <tr>
                                 <td>{{ (($event->currentPage() - 1 ) * $event->perPage() ) + $loop->iteration }}</td>
-                                <td>@$item->title</td>
+                                <td>{{@$item->title}}</td>
                                 <td>@if($item->event_image)<img src="{{ asset($item->event_image) }}" style="width:30%" alt="Image">@endif</td>
                                 <td>@if($item->mobile_event_image)<img src="{{ asset($item->mobile_event_image) }}" style="width:30%" alt="Mobile Image">@endif</td>
                                 <td>{{ @$item->venue }}</td>
                                 <td>{{ @$item->details }}</td>
                                 <td>{{ @$item->date }}</td>
-                                <td>{{ @$item->total_people_in_event }}</td>
+                                <td>{{ @$item->total_person_in_event }}</td>
                                 <td>{{@$item->vip_guest_name}}</td>
                                 <td>{{ @$item->sequence }}</td>
-                                <td>{{ @$item-> show_in_homepage}}</td>
-                                <td>{{@$item->type}}</td>
                                 <td>
                                 @if(!empty($item->status) && $item->status==0)
                                   <lable class="badge badge-danger">{{@$item->statusflag->name}}</lable>
