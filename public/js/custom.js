@@ -25,4 +25,33 @@ function getAge(fromdate, todate) {
   return age.join("");
 }
 
+$("#datepicker").datepicker({
+  minDate: 0 // Setting minDate to 0 blocks past dates
+});
+
+function submitForm(id,type)
+{
+  var page = $(".submitBtn").attr('page');
+  var flag = 0;
+     $.ajax({
+          type:'POST',
+          url:"approved_reject_status",
+          data:{'id':id,'type':type,'page':page},
+          beforeSend: function () {
+              $('.submitBtn').attr("disabled","disabled");
+          },
+          success:function(msg)
+          {
+            if(msg==1)
+            {
+              window.location.reload();
+            }
+            else{
+              $("#status_msg").html('Something Went Wrong');
+            }
+            
+          }
+    });
+}
+
 

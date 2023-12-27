@@ -15,16 +15,45 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $data = [
-            
-            'adBanner1-viewAny',
-            'adBanner1-delete',
-            'adBanner1-view',
-            'adBanner1-edit',
-            'adBanner1-create',
-            'adBanner1-restore',
-            'adBanner1-forceDelete',
-            'adBanner1-update',
-            'adBanner1-store',
+            'event-viewAny',
+            'event-delete',
+            'event-view',
+            'event-edit',
+            'event-create',
+            'event-restore',
+            'event-forceDelete',
+            'event-update',
+            'event-store',
+
+            'event-viewAny',
+            'event-delete',
+            'event-view',
+            'event-edit',
+            'event-create',
+            'event-restore',
+            'event-forceDelete',
+            'event-update',
+            'event-store',
+
+            'seat-viewAny',
+            'seat-delete',
+            'seat-view',
+            'seat-edit',
+            'seat-create',
+            'seat-restore',
+            'seat-forceDelete',
+            'seat-update',
+            'seat-store',
+
+            'event_booking-viewAny',
+            'event_booking-delete',
+            'event_booking-view',
+            'event_booking-edit',
+            'event_booking-create',
+            'event_booking-restore',
+            'event_booking-forceDelete',
+            'event_booking-update',
+            'event_booking-store',
 
         ];
 

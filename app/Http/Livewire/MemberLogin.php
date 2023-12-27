@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Hash;
-use App\Models\Members;
+use App\Models\Member;
 use Auth;
 
 class MemberLogin extends Component
@@ -28,9 +28,9 @@ class MemberLogin extends Component
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        
-        if(Auth::attempt(['email' => $this->email, 'password' => $this->password])){ 
-                return redirect('home');
+
+        if(Auth::guard('member')->attempt(['email' => $this->email, 'password' => $this->password])){ 
+                return redirect('member/dashboard');
         }else{
             session()->flash('error', 'email and password are wrong.');
         }

@@ -51,9 +51,9 @@
               
                 <li class="nav-header">Master Section</li>
                 <li
-                    class="nav-item {{ request()->is('admin/cities*') || request()->is('admin/locations*') ? 'menu-open' : '' }} ">
+                    class="nav-item {{ request()->is('admin/adBanner*') ? 'menu-open' : '' }} ">
                     <a href="#"
-                        class="nav-link {{ request()->is('admin/cities*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-school"></i>
                         <p>
                             Masters
@@ -61,16 +61,107 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">                     
-                        @can('city-viewAny')
+                        @can('adBanner-viewAny')
                             <li class="nav-item">
-                                <a href="{{ url('admin/cities') }}" class="nav-link {{ request()->is('admin/cities*') ? 'active' : '' }}">
+                                <a href="{{ url('admin/adBanner') }}" class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
                                     <i class="fas fa-house-user nav-icon"></i>
-                                    <p>City/Village {{-- <span class="badge badge-info right">2</span> --}}</p>
+                                    <p>Ad Banners</p>
                                 </a>
                             </li>
                         @endcan
+                        @can('event-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/event') }}" class="nav-link {{ request()->is('admin/event*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Khadya Samaj Update</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('testimonial-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/testimonial') }}" class="nav-link {{ request()->is('admin/testimonial*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Testimonial</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('achivementbymember-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/achivementbymember') }}" class="nav-link {{ request()->is('admin/aachivementbymemberdBanner*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Achivement By Member</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('job-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/job') }}" class="nav-link {{ request()->is('admin/job*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Job</p>
+                                </a>
+                            </li>
+                        @endcan
+                        @can('requirement-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/requirement') }}" class="nav-link {{ request()->is('admin/requirement*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Requirement</p>
+                                </a>
+                            </li>
+                        @endcan
+
+                        @can('member-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/member') }}" class="nav-link {{ request()->is('admin/member*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Member List</p>
+                                </a>
+                            </li>
+                        @endcan
+                        
                     </ul>
                 </li>
+
+                @if (Gate::check('event-viewAny') || Gate::check('seat-viewAny') || Gate::check('event_booking-viewAny'))
+                    <li class="nav-header">Event Section</li>
+                    <li
+                        class="nav-item {{ request()->is('admin/events*') || request()->is('admin/seats*') || request()->is('admin/event-bookings*') ? 'menu-open' : '' }} ">
+                        <a href="#"
+                            class="nav-link {{ request()->is('admin/events*') || request()->is('admin/seats*') || request()->is('admin/event-bookings*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-school"></i>
+                            <p>
+                                Event Management
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">                     
+                            @can('seat-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/seats') }}" class="nav-link {{ request()->is('admin/seats*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Seats</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('event-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/events') }}" class="nav-link {{ request()->is('admin/events*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Events</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('event_booking-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/event-bookings') }}" class="nav-link {{ request()->is('admin/event-bookings*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Events</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endif
 
 
                 <li class="nav-header">System Section</li>

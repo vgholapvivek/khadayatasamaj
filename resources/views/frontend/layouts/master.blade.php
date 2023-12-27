@@ -11,42 +11,44 @@
 <meta name="keywords" content="" />
 <meta name="author" content="">
 <!-- favicon -->
-<link rel="shortcut icon" type="image/favicon" href="{{asset('frontend/images/logo.webp')}}">
+<link rel="shortcut icon" type="image/favicon" href="{{asset('/frontend/images/logo.webp')}}">
 <!-- bootstrap -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/bootstrap.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/bootstrap.min.css')}}">
 <!-- simple-line icon -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/simple-line-icons.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/simple-line-icons.css')}}">
 <!-- font-awesome icon -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/font-awesome.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/font-awesome.min.css')}}">
 <!-- themify icon -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/themify-icons.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/themify-icons.css')}}">
 <!-- ion icon -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/ionicons.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/ionicons.min.css')}}">
 <!-- owl slider -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/owl.carousel.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/owl.theme.default.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/owl.carousel.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/owl.theme.default.min.css')}}">
 <!-- swiper -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/swiper.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/swiper.min.css')}}">
 <!-- animation -->
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/animate.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/animate.css')}}">
 <!-- style -->
-@if(Auth::user())
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style2.css')}}">
+@if(Request::segment(1) == 'member' && Request::segment(2) != 'login' && Request::segment(2) != 'register')
+    <link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/style2.css')}}">
 @else
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('/frontend/css/style.css')}}">
 @endif
-<link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}">
+
+<!-- <link rel="stylesheet" type="text/css" href="{{asset('frontend/css/responsive.css')}}"> -->
+
 @livewireStyles
+
 </head>
 
 <body class="home-1">
-    @if(Auth::user())
+    @if(Request::segment(1) == 'member' && Request::segment(2) != 'login' && Request::segment(2) != 'register')
         @include('frontend/includes/header1')
     @else
-    <!-- header start -->
         @include('frontend/includes/header')
     @endif 
-    <!-- header end -->
+    
     @yield('content')
 
     @include('frontend/includes/footer')
@@ -70,22 +72,24 @@
     <!-- back to top end -->
     <div class="mm-fullscreen-bg"></div>
     <!-- jquery -->
-    <script src="{{asset('frontend/js/modernizr-2.8.3.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/modernizr-2.8.3.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/jquery-3.6.0.min.js')}}"></script>
     
     <!-- bootstrap -->
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/bootstrap.min.js')}}"></script>
     <!-- popper -->
-    <script src="{{asset('frontend/js/popper.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/popper.min.js')}}"></script>
     <!-- fontawesome -->
-    <script src="{{asset('frontend/js/fontawesome.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/fontawesome.min.js')}}"></script>
     <!-- owl carousal -->
-    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/owl.carousel.min.js')}}"></script>
     <!-- swiper -->
-    <script src="{{asset('frontend/js/swiper.min.js')}}"></script>
+    <script src="{{asset('/frontend/js/swiper.min.js')}}"></script>
     <!-- custom -->
-    <script src="{{asset('frontend/js/custom.js')}}"></script>
+    <script src="{{asset('/frontend/js/custom.js')}}"></script>
+
     @livewireScripts
+    
     @yield('scripts')
 </body>
 </html>

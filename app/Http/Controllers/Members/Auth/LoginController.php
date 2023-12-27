@@ -33,7 +33,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('userLogout');
+        $this->middleware('member')->except('memberLogout');
     }
 
     public function login(){
@@ -44,32 +44,20 @@ class LoginController extends Controller
         return view('frontend.auth.register');
     }
 
-    public function memberRegister(Request $request)
-    {
-        $member = Member::create([
-            'name' => $request->name,
-            'last_name'=>$request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-       
-       
-        return response()->json(['status'=>1,'message'=>$customer->name."  Register Successfully !!"]);
-    }
-
+    
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    public function customerLogin(Request $request)
+    public function memberLogin(Request $request)
     {
+        $requestData = $request->all();
         $this->validate($request, [
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
-
-        if (Auth::guard('member')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) 
+        if(auth()->guard('member')->attempt(array('email' => $requestData['email'], 'password' => $requestData['password'])))
         {
             return response()->json(['status'=>1,'message'=>" Congratulations You Login Successfully !!"]);
         }
@@ -80,7 +68,7 @@ class LoginController extends Controller
         // return redirect()->intended('/'); 
     }
     
-    public function customerLogout(Request $request)
+    public function memberLogout(Request $request)
     {
         Auth::guard('member')->logout();
         return redirect('/');

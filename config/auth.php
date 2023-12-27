@@ -46,11 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-        'admin' => [
-            'driver' => 'session',
-            'provider' => 'admins',
-        ],
 
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'members', // You need to define the provider for the 'member' guard.
+        ],
     ],
 
     /*
@@ -73,13 +73,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
+
+        'members' => [
+            'driver' => 'eloquent',
             'model' => App\Models\Members::class,
         ],
 
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\User::class,
-        ],
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
@@ -100,12 +105,6 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-    'admins' => [
-            'provider' => 'admins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
