@@ -122,6 +122,47 @@
                     </ul>
                 </li>
 
+                @if (Gate::check('event-viewAny') || Gate::check('seat-viewAny') || Gate::check('event_booking-viewAny'))
+                    <li class="nav-header">Event Section</li>
+                    <li
+                        class="nav-item {{ request()->is('admin/events*') || request()->is('admin/seats*') || request()->is('admin/event-bookings*') ? 'menu-open' : '' }} ">
+                        <a href="#"
+                            class="nav-link {{ request()->is('admin/events*') || request()->is('admin/seats*') || request()->is('admin/event-bookings*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-school"></i>
+                            <p>
+                                Event Management
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">                     
+                            @can('seat-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/seats') }}" class="nav-link {{ request()->is('admin/seats*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Seats</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('event-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/events') }}" class="nav-link {{ request()->is('admin/events*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Events</p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('event_booking-viewAny')
+                                <li class="nav-item">
+                                    <a href="{{ url('admin/event-bookings') }}" class="nav-link {{ request()->is('admin/event-bookings*') ? 'active' : '' }}">
+                                        <i class="fas fa-house-user nav-icon"></i>
+                                        <p>Events</p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endif
+
 
                 <li class="nav-header">System Section</li>
                 <li

@@ -2,172 +2,173 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Update;
-use App\Models\UpdateImage;
-use App\Models\Status;
 use App\Http\Requests\StoreEventRequest;
 use App\Http\Requests\UpdateEventRequest;
+use App\Models\Event;
+use App\Models\EventImage;
+use App\Models\Seat;
+use App\Models\EventBooking;
 use Illuminate\Http\Request;
-use File;
 
 class EventController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function __construct()
     {
-        $this->authorizeResource(Event::class);
-    }   
+        // $this->authorizeResource(Event::class);
+    }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
-        //
         $keyword = $request->get('search');
-        $perPage = 25;
+        $perPage = 50;
 
-        if (!empty($keyword)) {
-            $event = Update::where('name', 'LIKE', "%$keyword%")
-            ->latest()->paginate($perPage);
-        } else {
-            $event = Update::latest()->paginate($perPage);
+        if (!empty($keyword)) 
+        {
+            $events  = Event::where('title', 'LIKE', "%$keyword%")
+                            ->orWhere('venue', 'LIKE', "%$keyword%")
+                            ->orWhere('details', 'LIKE', "%$keyword%")
+                            ->latest()->paginate($perPage);
+        } 
+        else 
+        {
+            $events  = Event::latest()->paginate($perPage);
         }
 
-        return view('admin.event.index', compact('event'));
+        return view('admin.events.index', compact('events'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
-        $status = '';
-        $member_status = Status::whereNotNull('member_status')->pluck('name','id');
-        $status = Status::whereNotNull('admin_status')->pluck('name','id');
-        return view('admin.event.create',compact('member_status','status'));
+        return view('admin.events.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreEventRequest  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(StoreEventRequest $request)
     {
-        $requestData = $request->except('event_image', 'mobile_event_image');
-        $update = Update::create($requestData);
-    
-        $eventImages = $request->file('event_image');
-        $mobileEventImages = $request->file('mobile_event_image');
-        $imagePairs = [];
-    
-        // Assuming the count for both image types is the same
-        for ($i = 0; $i < count($eventImages); $i++) {
-            $eventImagePath = $this->uploadImage($eventImages[$i], 'event_image');
-            $mobileEventImagePath = $this->uploadImage($mobileEventImages[$i], 'mobile_event_image');
-    
-            $imagePairs[] = [
-                'update_id' => $update->id,
-                'event_image' => $eventImagePath,
-                'mobile_event_image' => $mobileEventImagePath
-            ];
-        }
-    
-        // Insert all image pairs related to the update
-        $update->updateImages()->createMany($imagePairs);
-    
-        return redirect('admin/event')->with('success', 'Events added!');
+        $requestData = $request->all();
+
+        $event = Event::create($requestData);
+
+        if($event)
+        {
+            $path = 'frontend/images/events/';
+            if ($file = $request->file('images')) 
+            {
+                $file_name = time();
+                $eventImageData['image'] = '/' . upload_file($file, $path, $file_name);
+            }    
+
+            $eventImageData['event_id'] = $event->id;
+            EventImage::create($eventImageData);
+
+            $seats = Seat::where('status',1)->get();
+            foreach($seats as $seat)
+            {
+                $data['event_id'] = $event->id;
+                $data['seat_id'] = $seat->id;
+                $data['status'] = 1;
+                EventBooking::create($data);
+            }
+        }        
+
+        return redirect('admin/events')->with('success', 'Event added!');
     }
-    
-    private function uploadImage($image, $type)
-    {
-        $folderPath = public_path("frontend/images/{$type}/");
-    
-        if (!File::exists($folderPath)) {
-            File::makeDirectory($folderPath, 0777, true, true);
-        }
-    
-        $imageName = $image->getClientOriginalName();
-        $image->move($folderPath, $imageName);
-    
-        return "frontend/images/{$type}/" . $imageName;
-    }
-    
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
      */
-    public function show(Event $event)
+    public function show(Event $event )
     {
-        //
+        return view('admin.events.show', compact('event'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
      */
-    public function edit(Event $event)
+    public function edit(Event $event )
     {
-        $status = '';
-        $member_status = Status::whereNotNull('member_status')->pluck('name','id');
-        $status = Status::whereNotNull('admin_status')->pluck('name','id');
-        return view('admin.event.edit', compact('event','member_status','status'));
+        return view('admin.events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateEventRequest  $request
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(UpdateEventRequest $request, Event $event)
+    public function update(UpdateEventRequest $request, Event $event )
     {
-        $requestData = $request->except('event_image', 'mobile_event_image');
-        $event->update($requestData);
-    // Code for processing event images
-    $eventImages = $request->file('event_image');
-    $mobileEventImages = $request->file('mobile_event_image');
-    $imagePairs = [];
 
-    // Assuming the count for both image types is the same
-    for ($i = 0; $i < count($eventImages); $i++) {
-        $eventImagePath = $this->uploadImage($eventImages[$i], 'event_image');
-        $mobileEventImagePath = $this->uploadImage($mobileEventImages[$i], 'mobile_event_image');
+        $requestData = $request->all();
 
-        $imagePairs[] = [
-            'update_id' => $update->id,
-            'event_image' => $eventImagePath,
-            'mobile_event_image' => $mobileEventImagePath
-        ];
+        $event ->update($requestData);
+
+        $path = 'frontend/images/events/';
+        if ($file = $request->file('images')) 
+        {
+            $file_name = time();
+            $eventImageData['image'] = '/' . upload_file($file, $path, $file_name);
+        }    
+
+        $eventImageData['event_id'] = $event->id;
+        EventImage::create($eventImageData);
+
+        $seats = Seat::where('status',1)->get();
+        foreach($seats as $seat)
+        {
+            $data['event_id'] = $event->id;
+            $data['seat_id']  = $seat->id;
+            $data1 = [];
+            EventBooking::updateOrCreate($data,$data1);
+        }    
+
+        return redirect('admin/events')->with('success', 'Event updated!');
     }
-
-    // Insert all image pairs related to the update
-        $update->updateImages()->createMany($imagePairs);
-       
-        
-        return redirect('admin/event')->with('success', 'Events updated!');
-    }
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroy(Event $event)
+    public function destroy(Event $event )
     {
-        $event->delete();
-        return redirect('admin/event')->with('success', 'Event deleted!');
+        $event ->delete();
+        return redirect('admin/events')->with('success', 'Event deleted!');
     }
 }

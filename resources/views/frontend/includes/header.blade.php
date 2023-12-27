@@ -5,7 +5,7 @@
                     <div class="headr-khadayata">
                         <!-- logo start -->
                         <div class="header-element logo">
-                            <a href="index.php">
+                            <a href="/">
                                 <img src="{{asset('frontend/images/logo.webp')}}" alt="logo-image" class="img-fluid">
                             </a>
                         </div>
@@ -21,8 +21,25 @@
                                 <i class="fa fa-envelope"></i><a href="mailto:care@khadayatasamaj.in"> care@khadayatasamaj.in</a>
                             </div>
                             <div class="head-register">
-                                <a href="{{url('member/register')}}" class="btn btn-style2">Register</a>
-                                <a href="{{url('member/login')}}" class="btn btn-style2">Login</a>
+                                @if(Auth::guard('member')->user())
+                                    <li class="menu-link parent">
+                                        <a href="#collapse-page-menu" data-bs-toggle="collapse" class="link-title link-title-lg">
+                                            <span class="sp-link-title">Welcome {{ucfirst(@Auth::guard('member')->user()->firstName)}}</span>
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
+                                        <ul class="dropdown-submenu sub-menu collapse" id="collapse-page-menu">
+                                            <li class="submenu-li">
+                                                <a href="{{url('/member/dashboard')}}" class="submenu-link">My Dashboard</a>
+                                            </li>
+                                            <li class="submenu-li">
+                                                <a href="{{url('/member/logout')}}" class="submenu-link">Logout</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @else
+                                    <a href="{{url('member/register')}}" class="btn btn-style2">Register</a>
+                                    <a href="{{url('member/login')}}" class="btn btn-style2">Login</a>
+                                @endif    
                             </div>
                         </div>
                         <div class="header-main">

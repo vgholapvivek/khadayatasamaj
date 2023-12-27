@@ -20,6 +20,10 @@ use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\SeatController;
+use App\Http\Controllers\EventBookingController;
+
 
 
 Route::group(['prefix' => 'admin'], function () 
@@ -47,6 +51,9 @@ Route::group(['prefix' => 'admin'], function ()
         Route::resource('achivementbymember', AchivementbymemberController::class);
         Route::post('approved_reject_status', [StatusController::class, 'approved_reject_status'])->name('approved_reject_status');
         Route::resource('blog', BlogController::class);
-        Route::resource('event', EventController::class);
+        Route::resource('update', UpdateController::class);
+        Route::resource('seats', SeatController::class);
+        Route::resource('events', EventController::class);
+        Route::resource('event-bookings', EventBookingController::class);
     });
 });

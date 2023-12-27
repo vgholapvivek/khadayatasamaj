@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Event')
+@section('title', 'Past Event')
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -14,7 +14,7 @@
                     <ol class="breadcrumb float-sm-right">
                         @can('event-create')
                             <div>
-                            <a href="{{  url('admin/event/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                            <a href="{{  url('admin/update/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
                                     type="button"> <i class="fa fa-plus"></i> Add new Event</a>
                             </div>
                         @endcan
@@ -30,10 +30,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Event List</h3>
+                            <h3 class="card-title">Update List</h3>
 
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/event', 'role' => 'search'])  !!}
+                                    {!! Form::open(['method' => 'GET', 'url' => '/update', 'role' => 'search'])  !!}
 
                                 <div class="input-group input-group-sm" style="width: 150px;">
 
@@ -55,7 +55,7 @@
                             <table class="table table-head-fixed">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Name</th><th>Event Image</th><th>Mobile Event Image</th><th>Venue</th><th>Details</th><th>Date</th><th>Total People In Event</th><th>Vip Guest Names</th><th>Sequence</th><th>Status</th>
+                            <th>#</th><th>Name</th><th>Update Image</th><th>Mobile Update Image</th><th>Venue</th><th>Details</th><th>Date</th><th>Total People In Event</th><th>Vip Guest Names</th><th>Sequence</th><th>Status</th>
                             <th>Actions</th>
 
                         </tr>
@@ -87,7 +87,7 @@
                                 </td>
                                 <td>
                                     @can('event-edit')
-                                        <a href="{{ url('admin/event/' . $item->id . '/edit') }}" title="Edit event">
+                                        <a href="{{ url('admin/update/' . $item->id . '/edit') }}" title="Edit event">
                                             <button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
                                         </a>
                                     @endcan

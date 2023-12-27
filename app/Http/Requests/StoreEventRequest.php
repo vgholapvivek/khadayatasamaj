@@ -24,14 +24,14 @@ class StoreEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required',
-            'event_image'=>'required',
-            'mobile_event_image'=>'required',
-            'venue'=>'required',
-            'details'=>'required',
-            'date'=>'required',
-            'total_person_in_event'=>'required',
-            'vip_guest_name'=>'required'
+            'title' => 'required',
+            'venue' => 'required',
+            'details' => 'required',
+            'description' => 'required',
+            'max_ticket_book' => 'required',
+            'ticket_price' => 'required',
+            'date' => 'required',
+            'time' => 'required',
         ];
     }
 }

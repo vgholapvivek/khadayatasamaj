@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Edit Event')
+@section('title', 'Edit Update')
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -12,7 +12,7 @@
                     <ol class="breadcrumb float-sm-right">
                         @can('event-create')
                         <div>
-                            <a href="{{ url('admin/event') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
+                            <a href="{{ url('admin/update') }}" class="btn btn-info btn-sm text-white mb-0 me-0" type="button"> <i class="fa fa-arrow-left"></i> Back</a> 
                         </div>
                         @endcan
                     </ol>
@@ -30,10 +30,10 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                       <form method="POST" action="{{ url('admin/event/' . $event->id) }}" enctype="multipart/form-data">
+                       <form method="POST" action="{{ url('admin/update/' . $event->id) }}" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             {{ csrf_field() }}
-                                @include ('admin.event.form', ['formMode' => 'edit'])
+                                @include ('admin.update.form', ['formMode' => 'edit'])
 
                             </form>
 

@@ -20,9 +20,8 @@
                             <div class="head-mail" >
                                 <i class="fa fa-envelope"></i><a href="mailto:care@khadayatasamaj.in"> care@khadayatasamaj.in</a>
                             </div>
-                            <div class="head-register">
-                                
-                                <h1>Welcome {{ucfirst(@Auth::guard('member')->user()->name)}}</h1>
+                            <div class="head-register">                                
+                                <h1>Welcome {{ucfirst(@Auth::guard('member')->user()->firstName)}}</h1>
                             </div>
                         </div>
                         <div class="header-main">
@@ -101,7 +100,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="{{url('/member/feedback')}}" class="link-title">
+                                                        <a href="{{url('/member/feedbacks')}}" class="link-title">
                                                             <span class="sp-link-title">Feedback</span>
                                                         </a>
                                                     </li>
