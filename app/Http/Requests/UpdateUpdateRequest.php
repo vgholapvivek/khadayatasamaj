@@ -26,7 +26,6 @@ class UpdateUpdateRequest extends FormRequest
         return [
             'title'=>'required',
             'event_image'=>'required',
-            'event_mobile_image'=>'required',
             'venue'=>'required',
             'details'=>'required',
             'date'=>'required',

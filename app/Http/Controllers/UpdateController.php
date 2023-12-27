@@ -54,7 +54,7 @@ class UpdateController extends Controller
       * @param  \App\Http\Requests\StoreEventRequest  $request
       * @return \Illuminate\Http\Response
       */
-     public function store(StoreEventRequest $request)
+     public function store(StoreUpdateRequest $request)
      {
          $requestData = $request->except('event_image', 'mobile_event_image');
          $update = Update::create($requestData);
@@ -101,7 +101,7 @@ class UpdateController extends Controller
       * @param  \App\Models\Event  $event
       * @return \Illuminate\Http\Response
       */
-     public function show(Event $event)
+     public function show(Update $update)
      {
          //
      }
@@ -112,11 +112,13 @@ class UpdateController extends Controller
       * @param  \App\Models\Event  $event
       * @return \Illuminate\Http\Response
       */
-     public function edit(Event $event)
+     public function edit(Update $event,$id)
      {
          $status = '';
          $member_status = Status::whereNotNull('member_status')->pluck('name','id');
          $status = Status::whereNotNull('admin_status')->pluck('name','id');
+         $event = Update::find($id);
+         
          return view('admin.update.edit', compact('event','member_status','status'));
      }
  
@@ -127,10 +129,12 @@ class UpdateController extends Controller
       * @param  \App\Models\Event  $event
       * @return \Illuminate\Http\Response
       */
-     public function update(UpdateEventRequest $request, Event $event)
+     public function update(UpdateUpdateRequest $request, Update $event,$id)
      {
-         $requestData = $request->except('event_image', 'mobile_event_image');
-         $event->update($requestData);
+       
+        $update = Update::find($id);
+        $requestData = $request->except('event_image', 'mobile_event_image');
+         $update->update($requestData);
      // Code for processing event images
      $eventImages = $request->file('event_image');
      $mobileEventImages = $request->file('mobile_event_image');
@@ -162,7 +166,7 @@ class UpdateController extends Controller
       * @param  \App\Models\Event  $event
       * @return \Illuminate\Http\Response
       */
-     public function destroy(Event $event)
+     public function destroy(Update $event)
      {
          $event->delete();
          return redirect('admin/update')->with('success', 'Event deleted!');

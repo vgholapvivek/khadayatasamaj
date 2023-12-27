@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Event;
+use App\Models\Update;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class EventPolicy
+class UpdatePolicy
 {
     use HandlesAuthorization;
 
@@ -19,7 +19,7 @@ class EventPolicy
     public function viewAny(User $user)
     {
         //
-        return $user->hasPermissionTo('event-viewAny');
+        return $user->hasPermissionTo('update-viewAny');
     }
 
     /**
@@ -29,10 +29,10 @@ class EventPolicy
      * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Event $event)
+    public function view(User $user, Update $update)
     {
         //
-        return $user->hasPermissionTo('event-view');
+        return $user->hasPermissionTo('update-view');
 
     }
 
@@ -45,7 +45,7 @@ class EventPolicy
     public function create(User $user)
     {
         //
-        return $user->hasPermissionTo('event-create');
+        return $user->hasPermissionTo('update-create');
 
     }
 
@@ -56,10 +56,10 @@ class EventPolicy
      * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Event $event)
+    public function update(User $user, Update $update)
     {
         //
-        return $user->hasPermissionTo('event-update');
+        return $user->hasPermissionTo('update-update');
 
     }
 
@@ -70,10 +70,10 @@ class EventPolicy
      * @param  \App\Models\City  $city
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Event $event)
+    public function delete(User $user, Update $update)
     {
         //
-        return $user->hasPermissionTo('event-delete');
+        return $user->hasPermissionTo('update-delete');
 
     }
 
@@ -81,13 +81,17 @@ class EventPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
+<<<<<<< HEAD
+     * @param  \App\Models\Event  $event
+=======
      * @param  \App\Models\City  $city
+>>>>>>> 02b0edeb1468256386439600e3519840685afe73
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(User $user, Event $event)
     {
         //
-        return $user->hasPermissionTo('event-restore');
+        return $user->hasPermissionTo('update-restore');
 
     }
 
@@ -95,13 +99,17 @@ class EventPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
+<<<<<<< HEAD
+     * @param  \App\Models\Event  $event
+=======
      * @param  \App\Models\City  $city
+>>>>>>> 02b0edeb1468256386439600e3519840685afe73
      * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(User $user, Event $event)
     {
         //
-        return $user->hasPermissionTo('event-forceDelete');
+        return $user->hasPermissionTo('update-forceDelete');
 
     }
 }
