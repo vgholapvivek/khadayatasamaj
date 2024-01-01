@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('content')
-@section('title', 'Past Event')
+@section('title', 'Matrimonial')
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -8,14 +8,15 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                   <h2></h2>
+                   
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @can('event-create')
+                        @can('matrimonial-create')
                             <div>
-                            <a href="{{  url('admin/update/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
-                                    type="button"> <i class="fa fa-plus"></i> Add new Past Event</a>
+                                <a href="{{  url('admin/matrimonial/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
+                                    type="button"> <i class="fa fa-plus"></i> Add new
+                                    image</a>
                             </div>
                         @endcan
                     </ol>
@@ -30,10 +31,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Update List</h3>
+                            <h3 class="card-title">Matrimonial List</h3>
 
                             <div class="card-tools">
-                                    {!! Form::open(['method' => 'GET', 'url' => '/update', 'role' => 'search'])  !!}
+                                    {!! Form::open(['method' => 'GET', 'url' => '/matrimonial', 'role' => 'search'])  !!}
 
                                 <div class="input-group input-group-sm" style="width: 150px;">
 
@@ -52,28 +53,24 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0" style="height: 600px;">
-                            <table class="table table-head-fixed">
+                            <table class="table table-head-fixed text-nowrap">
                                      <thead>
                         <tr>
-                            <th>#</th><th>Name</th><th>Update Image</th><th>Mobile Update Image</th><th>Venue</th><th>Details</th><th>Date</th><th>Total People In Event</th><th>Vip Guest Names</th><th>Sequence</th><th>Status</th>
-                            <th>Actions</th>
+                            <th>#</th><th>Name</th><th>Age</th><th>Image</th><th>Mobile Image</th><th>Sequence</th><th>User Type</th><th>Status</th>
+                            <th>Member Approval</th><th>Actions</th>
 
                         </tr>
                     </thead>
                     <tbody>
 
-                    @foreach($event as $item)
+                    @foreach($matrimonial as $item)
                             <tr>
-                                <td>{{ (($event->currentPage() - 1 ) * $event->perPage() ) + $loop->iteration }}</td>
-                                <td>{{@$item->title}}</td>
-                                <td>@if($item->event_image)<img src="{{ asset($item->event_image) }}" style="width:30%" alt="Image">@endif</td>
-                                <td>@if($item->mobile_event_image)<img src="{{ asset($item->mobile_event_image) }}" style="width:30%" alt="Mobile Image">@endif</td>
-                                <td>{{ @$item->venue }}</td>
-                                <td>{{ @$item->details }}</td>
-                                <td>{{ @$item->date }}</td>
-                                <td>{{ @$item->total_person_in_event }}</td>
-                                <td>{{@$item->vip_guest_name}}</td>
+                                <td>{{ (($matrimonial->currentPage() - 1 ) * $matrimonial->perPage() ) + $loop->iteration }}</td>
+                                <td>@if($item->image)<img src="{{ asset($item->image) }}" style="width:30%" alt="image Image">@endif</td>
+                                <td>@if($item->mobile_image)<img src="{{ asset($item->mobile_image) }}" style="width:30%" alt="Mobile image Image">@endif</td>
                                 <td>{{ @$item->sequence }}</td>
+                                <td>{{@$item->image_type}}</td>
+                                <td>{{@$item->type}}</td>
                                 <td>
                                 @if(!empty($item->status) && $item->status==0)
                                   <lable class="badge badge-danger">{{@$item->statusflag->name}}</lable>
@@ -86,18 +83,33 @@
                                 @endif
                                 </td>
                                 <td>
-                                    @can('event-edit')
-                                        <a href="{{ url('admin/update/' . $item->id . '/edit') }}" title="Edit event">
+                                    
+                                @if($item->member_status == 0)
+                                  <button class="approval btn-success btn submitBtn" page="matrimonial" onclick="submitForm({{$item->id}},'Approved')">{{'Approved'}}</button>
+                                  <button class="reject btn-danger btn submitBtn" page="matrimonial" onclick="submitForm({{$item->id,'Rejected'}})">{{'Reject'}}</button>
+                                 
+                                @else
+                                  <b>{{@$item->memberStatusflag->name}}</b>
+                                @endif
+                               
+                                </td>
+                                <td>
+                                    @can('matrimonial-edit')
+                                        <a href="{{ url('admin/matrimonial/' . $item->id . '/edit') }}" title="Edit matrimonial">
                                             <button class="btn btn-primary btn-sm"><i class="fa fa-pen" aria-hidden="true"></i> Edit</button>
                                         </a>
                                     @endcan
                                 </td>
                             </tr>
                     @endforeach
+
+                
+
+                
                         </tbody>
                         </table>
                            <br>
-                        <div class="pagination-wrapper"> {!! $event->appends(['search' => Request::get('search')])->render() !!} </div>
+                        <div class="pagination-wrapper"> {!! $matrimonial->appends(['search' => Request::get('search')])->render() !!} </div>
 
                         </div>
                         <!-- /.card-body -->

@@ -51,7 +51,7 @@
             </span>
         @enderror
 
-        @if($event->images)
+        @if(@$event->images)
             <br>
             <div class="productImgBox">
                 @foreach($event->images as $image)

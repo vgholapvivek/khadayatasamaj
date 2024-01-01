@@ -23,6 +23,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\SeatController;
 use App\Http\Controllers\EventBookingController;
+use App\Http\Controllers\MatrimonialController;
 
 
 
@@ -55,5 +56,6 @@ Route::group(['prefix' => 'admin'], function ()
         Route::resource('seats', SeatController::class);
         Route::resource('events', EventController::class);
         Route::resource('event-bookings', EventBookingController::class);
+        Route::resource('matrimonial', MatrimonialController::class);
     });
 });
