@@ -1,8 +1,7 @@
 <form wire:submit.prevent="submit" method="post" enctype="multipart/form-data">
     <input type="hidden" name="full_name" value="" />
-	<input type="hidden" name="group[]" value="4" />   
+	<input type="hidden" name="group[]" value="4" />  
     
-
     <div class="row jumbotron  register-form">
                         <div class="col-sm-12 mx-t3 mb-4">
                             <h2 class="text-center">Membership Form</h2>
@@ -10,7 +9,7 @@
                         </div>
                         <div class="col-sm-12 form-group">
                             <label for="name-f">Membership No. / Receipt No.</label>
-                            <input type="text" wire:model="membershipNo" class="form-control" name="memobership_no" id="memobership_no" placeholder="Enter Membership No. / Receipt No">
+                            <input type="text" wire:model="membershipNo" class="form-control" name="memobership_no" id="memobership_no" placeholder="Enter Membership No. / Receipt No" >
                             @error('membershipNo') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
                         <div class="col-sm-6 form-group">
@@ -132,17 +131,18 @@
                         </div>
                         <div class="col-sm-12">
                             <input type="hidden" name="chb" value="0" />
-                            <input type="checkbox" class="d-inline" wire:model="chb" id="chb" name="chb"  value="1"><label for="chb"
+                            <input type="checkbox" class="d-inline" wire:model="chb" id="chb" name="chb"  value="1">
+                            <label for="chb"
                                 class="form-check-label">&nbsp;I accept all terms and conditions.
                             </label>
                         </div>
 						
                         <div class="col-sm-12 form-group reg-submit">
-                        <input type="hidden" name="banned" value="1" />
-							<input type="submit" class="btn btn-style1 float-right" value="Submit">
-							
-                        </div> 
-                    </div>
+                            <input type="hidden" name="banned" value="1" />
+                                <input type="submit" class="btn btn-style1 float-right" value="Submit">
+                                
+                            </div> 
+                        </div>
                     @if (session()->has('message'))
                         <div class="alert alert-success">
                             {{ session('message') }}

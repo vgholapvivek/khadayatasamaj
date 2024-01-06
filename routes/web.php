@@ -31,9 +31,9 @@ Route::group(['prefix' => 'admin'], function ()
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('login', [LoginController::class, 'showLoginForm']);        
     Route::post('login', [LoginController::class, 'login'])->name('admin/login');
+    
     Route::group(['middleware' => ['auth']], function() 
-    {
-        
+    {        
         Route::get('/home', [HomeController::class, 'index'])->name('home');
         Route::resource('users', UserController::class);
         Route::resource('member', MemberController::class);
