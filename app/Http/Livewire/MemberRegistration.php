@@ -8,6 +8,7 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use Session;
 use Hash;
+use Auth;
 
 class MemberRegistration extends Component
 {
@@ -19,6 +20,7 @@ class MemberRegistration extends Component
     {
         session()->start();
     }
+
     public function submit()
     {
         $data = array();
@@ -48,21 +50,21 @@ class MemberRegistration extends Component
         {  
             if ($this->memberPhoto) 
             {                
-                    $path = public_path().'/sfrontend/images/members/';
+                $path = public_path().'/sfrontend/images/members/';
                    
-                    if(!File::isDirectory($path))
-                    {
-                        File::makeDirectory($path, 0777, true, true);
-                    }   
-                   
-                    $file = $this->memberPhoto;
-                    $imageName = $file->getClientOriginalName();
-                    $path = $this->memberPhoto->storeAs('frontend/images/members', $imageName, 'public');
-                    $validatedData['memberPhoto'] = $path;
+                if(!File::isDirectory($path))
+                {
+                    File::makeDirectory($path, 0777, true, true);
+                }   
+               
+                $file = $this->memberPhoto;
+                $imageName = $file->getClientOriginalName();
+                $path = $this->memberPhoto->storeAs('frontend/images/members', $imageName, 'public');
+                $validatedData['memberPhoto'] = $path;            
             }
             
-            $validatedData['password'] = Hash::make('password');
-            // $validatedData['status']   = 0;
+            $validatedData['password'] = Hash::make($this->password);
+
            
             if(Member::create($validatedData))
             {

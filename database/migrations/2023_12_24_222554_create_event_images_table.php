@@ -15,8 +15,8 @@ class CreateEventImagesTable extends Migration
     {
         Schema::create('event_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('event_id');
-            $table->integer('image');
+            $table->integer('event_id')->nullable();
+            $table->integer('image')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

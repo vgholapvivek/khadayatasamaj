@@ -15,13 +15,15 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('image');
-            $table->string('mobile_image');
-            $table->text('description');
-            $table->string('status')->unique();
-            $table->string('type');
-            $table->string('member_status');
+            $table->string('title')->nullable();
+            $table->string('image')->nullable();
+            $table->string('mobile_image')->nullable();
+            $table->text('description')->nullable();
+            $table->string('sequence')->nullable();
+            $table->string('status')->nullable();
+            $table->string('type')->nullable();
+            $table->string('member_status')->nullable();
+            $table->text('rejected_reason')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

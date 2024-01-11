@@ -29,14 +29,33 @@ $("#datepicker").datepicker({
   minDate: 0 // Setting minDate to 0 blocks past dates
 });
 
+function showRejectModal(itemId) {
+  // Display the modal
+  var modal = document.getElementById('rejectModal');
+  modal.style.display = 'block';
+}
+
+function confirmReject(itemId) {
+  var confirmation = confirm("Are you sure you want to reject this item?");
+  
+  if (confirmation) {
+      // User clicked 'OK', proceed with rejection
+      //submitForm(itemId, 'Rejected');
+      showRejectModal(itemId);
+  } else {
+      // User clicked 'Cancel', do nothing
+  }
+}
+
 function submitForm(id,type)
 {
   var page = $(".submitBtn").attr('page');
+  var note = $("#rejectReason").val();
   var flag = 0;
      $.ajax({
           type:'POST',
           url:"approved_reject_status",
-          data:{'id':id,'type':type,'page':page},
+          data:{'id':id,'type':type,'page':page,'note':note},
           beforeSend: function () {
               $('.submitBtn').attr("disabled","disabled");
           },

@@ -75,7 +75,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="menu-link">
-                                                        <a href="{{url('/member/connection')}}" class="link-title">
+                                                        <a href="{{url('/member/connections')}}" class="link-title">
                                                             <span class="sp-link-title">Connection</span>
                                                         </a>
                                                     </li>

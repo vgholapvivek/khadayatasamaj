@@ -23,6 +23,7 @@ class CreateMatrimonialsTable extends Migration
             $table->integer('show_in_homepage')->nullable();
             $table->string('type')->nullable();
             $table->smallInteger('member_status')->nullable();
+            $table->text('rejected_reason')->nullable();
             $table->smallInteger('status')->nullable();
             $table->timestamps();
             $table->softDeletes();

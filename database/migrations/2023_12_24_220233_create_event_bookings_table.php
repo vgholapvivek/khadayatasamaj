@@ -15,10 +15,10 @@ class CreateEventBookingsTable extends Migration
     {
         Schema::create('event_bookings', function (Blueprint $table) {
             $table->id();
-            $table->integer('event_id');
-            $table->integer('seat_id');
-            $table->integer('user_id');
-            $table->integer('status');
+            $table->integer('event_id')->nullable();
+            $table->integer('seat_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

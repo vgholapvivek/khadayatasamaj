@@ -15,9 +15,9 @@ class CreateFeedbacksTable extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->text('subject');
-            $table->text('message');
-            $table->text('image');
+            $table->text('subject')->nullable();
+            $table->text('message')->nullable();
+            $table->text('image')->nullable();
             $table->integer('member_id');
             $table->timestamps();
             $table->softDeletes();

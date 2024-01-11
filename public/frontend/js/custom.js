@@ -23,6 +23,10 @@ $(".mm-fullscreen-bg").on('click', function(){
     $("body").removeClass("hidden");
 });
 
+// $('.payNow').click(function() {
+//     $('#paymentModal').modal('show');
+//  });
+
 
 
 (function ($) {

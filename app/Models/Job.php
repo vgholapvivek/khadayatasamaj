@@ -12,4 +12,10 @@ class Job extends Model
 
     protected $guarded = [];
 
+
+    public function adstatus()
+    {
+        return $this->belongsTo(Status::class, 'status', 'member_status');
+    }
+
 }

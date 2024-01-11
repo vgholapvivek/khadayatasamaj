@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Members\MemberController;
 use App\Http\Controllers\Members\Auth\LoginController;
 use App\Http\Controllers\Members\HomeController;
+use App\Http\Controllers\Members\AchievementController;
+use App\Http\Controllers\Members\RequirementController;
+use App\Http\Controllers\Members\JobController;
+use App\Http\Controllers\Members\MatrimonialController;
 
 Route::get('/clear', function() {
 
@@ -33,10 +37,28 @@ Route::group(['prefix' => 'member'], function ()
         Route::post('/register', [LoginController::class, 'memberRegister'])->name('memberRegister');        
         Route::get('/logout', [LoginController::class, 'memberLogout'])->name('memberLogout');
 
-        Route::group(['middleware' => ['member']], function() {     
+        Route::group(['middleware' => ['member']], function() {  
+                
                 Route::get('/dashboard', [MemberController::class, 'dashboard'])->name('dashboard');
                 Route::get('/profile', [MemberController::class, 'profile'])->name('profile');
                 Route::get('/message-board', [MemberController::class, 'messageBoard'])->name('message_board');
+
+                Route::get('/achievements/{ad_type}', [AchievementController::class, 'getAchievments']);
+                Route::post('/submit-achievement', [AchievementController::class, 'submitAchievement']);
+                Route::delete('/delete-achievement/{id}', [AchievementController::class, 'deleteAchievement']);
+
+                Route::get('/jobs/{ad_type}', [JobController::class, 'getJobs']);
+                Route::post('/submit-job', [JobController::class, 'submitJob']);
+                Route::delete('/delete-job/{id}', [JobController::class, 'deleteJob']);
+
+                Route::get('/requirements/{ad_type}', [RequirementController::class, 'getRequirements']);
+                Route::post('/submit-requirement', [RequirementController::class, 'submitRequirement']);
+                Route::delete('/delete-requirement/{id}', [RequirementController::class, 'deleteRequirement']);
+
+                Route::get('/matrimonials/{ad_type}', [MatrimonialController::class, 'getJobs']);
+                Route::post('/submit-matrimonial', [MatrimonialController::class, 'submitJob']);
+                Route::delete('/delete-matrimonial/{id}', [MatrimonialController::class, 'deleteJob']);
+
                 Route::get('/connections', [MemberController::class, 'connections'])->name('connections');
                 Route::get('/membership-plan', [MemberController::class, 'membershipPlan'])->name('membership_plan');
                 Route::get('/banners', [MemberController::class, 'banners'])->name('banners');

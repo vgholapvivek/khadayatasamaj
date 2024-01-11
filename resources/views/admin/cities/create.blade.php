@@ -33,6 +33,7 @@
                             <form method="POST" action="{{ url('admin/cities') }}" enctype="multipart/form-data">
                                 
                                 {{ csrf_field() }}
+                                
                                 @include ('admin.cities.form', ['formMode' => 'create'])
 
                             </form>

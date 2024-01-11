@@ -15,8 +15,8 @@ class CreateSuggestionsTable extends Migration
     {
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->text('message');
+            $table->string('type')->nullable();
+            $table->text('message')->nullable();
             $table->integer('member_id');
             $table->timestamps();
             $table->softDeletes();

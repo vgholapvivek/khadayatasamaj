@@ -15,9 +15,9 @@ class UpdateImages extends Migration
     {
         Schema::create('update_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('update_id');
-            $table->string('event_image');
-            $table->string('mobile_event_image');
+            $table->unsignedBigInteger('update_id')->nullable();
+            $table->string('event_image')->nullable();
+            $table->string('mobile_event_image')->nullable();
             $table->timestamps();
             $table->foreign('update_id')->references('id')->on('updates')->onDelete('cascade');
             $table->softDeletes();

@@ -86,8 +86,8 @@
                                     
                                 @if($item->member_status == 0)
                                   <button class="approval btn-success btn submitBtn" page="AdBanner" onclick="submitForm({{$item->id}},'Approved')">{{'Approved'}}</button>
-                                  <button class="reject btn-danger btn submitBtn" page="AdBanner" onclick="submitForm({{$item->id,'Rejected'}})">{{'Reject'}}</button>
-                                 
+                                  <button class="reject btn-danger btn submitBtn" page="AdBanner" onclick="confirmReject({{$item->id}})">{{'Reject'}}</button>
+                                   
                                 @else
                                   <b>{{@$item->memberStatusflag->name}}</b>
                                 @endif
@@ -103,9 +103,24 @@
                             </tr>
                     @endforeach
 
-                
-
-                
+                    
+                    <div class="modal-dialog">
+                        <div id="rejectModal" class="modal" style="width:500px;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Please give the reason for rejection</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="rejectReason">Rejected Reason:</label>
+                                    <textarea id="rejectReason" rows="4" cols="50"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="submitForm({{$item->id}}, 'Rejected')">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                         </tbody>
                         </table>
                            <br>

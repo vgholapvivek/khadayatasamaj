@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Members;
+use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -71,7 +71,7 @@ class LoginController extends Controller
     public function memberLogout(Request $request)
     {
         Auth::guard('member')->logout();
-        return redirect('/');
+        return redirect('/member/login');
     }
 
     public function registerThankyou(){

@@ -23,6 +23,7 @@ class CreateBlogsTable extends Migration
             $table->string('status');
             $table->integer('show_in_homepage');
             $table->string('type');
+            $table->date('date');
             $table->timestamps();
             $table->softDeletes();
         });
