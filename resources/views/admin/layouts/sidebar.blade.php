@@ -51,9 +51,9 @@
               
                 <li class="nav-header">Master Section</li>
                 <li
-                    class="nav-item {{ request()->is('admin/adBanner*') ? 'menu-open' : '' }} ">
+                    class="nav-item {{ request()->is('admin/adBanner*') || request()->is('admin/event*') || request()->is('admin/testimonial*') || request()->is('admin/aachivementbymemberdBanner*') || request()->is('admin/job*') || request()->is('admin/requirement*') || request()->is('admin/member*') || request()->is('admin/moms*') ? 'menu-open' : '' }} ">
                     <a href="#"
-                        class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('admin/adBanner*') || request()->is('admin/event*') || request()->is('admin/testimonial*') || request()->is('admin/aachivementbymemberdBanner*') || request()->is('admin/job*') || request()->is('admin/requirement*') || request()->is('admin/member*') || request()->is('admin/moms*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-school"></i>
                         <p>
                             Masters
@@ -118,6 +118,15 @@
                                 </a>
                             </li>
                         @endcan
+
+                        @can('mom-viewAny')
+                        <li class="nav-item">
+                            <a href="{{ url('admin/moms') }}" class="nav-link {{ request()->is('admin/moms*') ? 'active' : '' }}">
+                                <i class="fas fa-house-user nav-icon"></i>
+                                <p>MOM List</p>
+                            </a>
+                        </li>
+                    @endcan
                         
                     </ul>
                 </li>

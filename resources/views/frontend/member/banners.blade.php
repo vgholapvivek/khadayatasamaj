@@ -5,112 +5,60 @@
 
     @include('frontend.includes.shared.sponsers-banner')
 
-    <!-- History of Khadayata Samaj section  -->
-    <section class="samaj-updates-section animate fadeInDown two">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="recent-update-ben">
-                        <div class="recent-details">
-                            <h4>Upcoming Events</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Vietnam Tour - 2023</h5>
-                            <p><b>Venue :</b> Vietnam</p>
-                            <p><b>Details:</b> 10 days Tours in May-2023</p>
-                            <!-- <p>Update details..</p> 
-                            <p>Date</p>
-                            <p>Content</p>
-                            <p>Download PDF</p> -->
-                        </div>
-                        <div class="update-thumb-photo">
-                            <div class="update-thumbnail">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                            <div class="update-thumbnail2">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                        </div>
-
-                        <!-- <div class="recent-samaj-details">
-                            <h5>Update 02 Title</h5>
-                            <p>Update details..</p>
-                            <p>Date</p>
-                            <p>Content</p>
-                            <p>Download PDF</p>
-                        </div>
-                        <div class="update-thumb-photo">
-                            <div class="update-thumbnail">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                            <div class="update-thumbnail2">
-                                <p>Thumbnail Photo Clicking on it will open bigger photo</p>
-                            </div>
-                        </div> -->
-                    </div><br>
+   <!-- History of Khadayata Samaj section  -->
+   <section class="samaj-updates-section animate fadeInDown two">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="recent-details">
+                    <h4>Select Banner Position</h4>
                 </div>
-                <div class="col-md-4">
-                    <div class="recent-update-ben2">
-                        <div class="recent-details">
-                            <h4>Member Connections</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Member Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-                    </div><br>
-                </div>
-                <div class="col-md-4">
-                    <div class="recent-update-ben3">
-                        <div class="recent-details">
-                            <h4>Guest Connections</h4>
-                        </div>
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-
-                        <div class="recent-samaj-details">
-                            <h5>Guest Name</h5>
-                            <p>Sex - Male/Female</p>
-                            <p>Age - XX</p>
-                            <p>Details of Post. Would like ot connect for Discussing more om My and your Business</p>
-                            <p><b><u>Mobile no - xxxxxxxxxxx</u></b></p>
-                        </div>
-                    </div><br>
-                </div>
+                <br>
+                @livewire('member-upload-banner')
             </div>
+
+            {{-- <div class="col-md-5">
+                <div class="recent-update-ben4" style="background: aliceblue;">
+                    <div class="recent-details">
+                        <h4>Selected Banners</h4>
+                    </div>
+                    <div class="recent-samaj-details">
+                        <h5>Top Banner</h5>
+                        <p>Monthly - 5000</p>
+                        <p>Start Date - 02/02/2023</p>
+                        <p>End Date - 02/03/2023</p>
+                    </div>
+                    
+                    <div class="recent-samaj-details">
+                        <h5 style="margin-top: 0px;">Middle Banner</h5>
+                        <p>Monthly - 5000</p>
+                        <p>Start Date - 02/02/2023</p>
+                        <p>End Date - 02/03/2023</p>
+                    </div>
+
+                    <div class="recent-samaj-details">
+                        <h5 style="margin-top: 0px;">Bottom Banner</h5>
+                        <p>Monthly - 5000</p>
+                        <p>Start Date - 02/02/2023</p>
+                        <p>End Date - 02/03/2023</p>
+                    </div>
+
+                    <div class="recent-samaj-details"> 
+                        <p>Total - 15,000</p>
+                    </div>
+
+                    <div class="recent-samaj-details">
+                        <input type="checkbox" class="d-inline" id="chb" required="">
+                        <label for="chb" class="form-check-label">
+                            &nbsp;I accept all terms and conditions.
+                        </label><br><br>
+                        <a href="#" class="btn btn-style05">Pay Now</a>
+                    </div>
+                </div><br>
+            </div> --}}
+
         </div>
+      </div>
     </section>
 
     @livewire('metrimonial-banner-list')    

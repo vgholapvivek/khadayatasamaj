@@ -55,6 +55,16 @@ class PermissionTableSeeder extends Seeder
             'event_booking-update',
             'event_booking-store',
 
+            'mom-viewAny',
+            'mom-delete',
+            'mom-view',
+            'mom-edit',
+            'mom-create',
+            'mom-restore',
+            'mom-forceDelete',
+            'mom-update',
+            'mom-store',
+
         ];
 
         foreach ($data as $permission) {

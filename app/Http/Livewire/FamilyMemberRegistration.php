@@ -10,11 +10,11 @@ use Session;
 use Hash;
 use Auth;
 
-class MemberRegistration extends Component
+class FamilyMemberRegistration extends Component
 {
     use WithFileUploads;
     
-    public $membershipNo, $firstName, $lastName, $whatsappNo, $gender, $dob, $bloodGroup, $maritalStatus,$anniversaryDate, $panNo, $address, $nativePlace, $state, $pinCode, $username, $email, $password, $passwordConfirmation, $memberPhoto,$chb;
+    public $firstName, $lastName, $whatsappNo, $gender, $dob, $maritalStatus, $panNo, $email, $password, $memberPhoto,$member_relation,$chb;
 
     public function mount()
     {
@@ -24,29 +24,31 @@ class MemberRegistration extends Component
     public function submit()
     {
         $validatedData = $this->validate([
-            'membershipNo' => 'required|unique:members,membershipNo',
-            'firstName' => 'required|min:2',
-            'lastName' => 'required|min:2',
+            // 'membershipNo' => 'required|unique:members,membershipNo',
+            'firstName' => 'required|min:3',
+            'lastName' => 'required|min:3',
             'whatsappNo' => 'required',
             'gender' => 'required',
             'dob' => 'required',
-            'bloodGroup' => 'required',
+            // 'bloodGroup' => 'required',
             'maritalStatus' => 'required',
-            'anniversaryDate' => 'required',
+            // 'anniversaryDate' => 'required',
             'panNo' => 'required',
-            'address' => 'required',
-            'nativePlace' => 'required',
-            'state' => 'required',
-            'pinCode' => 'required',
-            'username' => 'required|unique:members,username',
+            // 'address' => 'required',
+            // 'nativePlace' => 'required',
+            // 'state' => 'required',
+            // 'pinCode' => 'required',
+            // 'username' => 'required|unique:members,username',
             'email' => 'required|unique:members,email',
             'password' => 'required',
             'memberPhoto' => 'required', // 1MB Max
+            'member_relation' => 'required',
             'chb' => 'accepted',
         ]);       
 
         try
-        { 
+        {  
+
             if ($this->memberPhoto) 
             {                
                     $path = public_path('frontend/images/members/');
@@ -57,15 +59,16 @@ class MemberRegistration extends Component
                     $validatedData['memberPhoto'] = '/'.$path;
             }
             
-            $validatedData['password'] = Hash::make($this->password);
-            $validatedData['status']   = 0;
-
+            $validatedData['password']   = Hash::make($this->password);
+            $validatedData['created_by'] = @Auth::guard('member')->user()->id;
+            $validatedData['status']     = 0;
            
             if(Member::create($validatedData))
             {
-                session()->flash('message', 'Member successfully registered.');
-                return redirect()->to('/member/register');
-                // return view('livewire.member-registration');
+                // Member::create($data);
+                session()->flash('message', 'Family Member successfully registered. Once admin approves member will be able to login');
+                return redirect()->to('/member/membership-plan');
+                // return view('livewire.member.family-member-registration');
             }
         }
         catch(\Exception $e)
@@ -76,6 +79,6 @@ class MemberRegistration extends Component
 
     public function render()
     {
-        return view('livewire.member-registration');
+        return view('livewire.member.family-member-registration');
     }
 }

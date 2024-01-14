@@ -19,7 +19,7 @@ class MemberController extends Controller
 { 
     public function __construct()
     {
-        $this->middleware('member');
+        $this->middleware('member');      
     }
 
     public function dashboard()
@@ -119,6 +119,11 @@ class MemberController extends Controller
         Feedback::create($data);
 
         return redirect('/member/feedbacks')->with('success', 'Thank you for your feedback');
+    }
+
+    public function moms()
+    {
+        return view('frontend.member.moms');
     }
     
     public function listOfMemberSearch()
