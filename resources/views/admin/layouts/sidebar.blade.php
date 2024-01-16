@@ -51,9 +51,9 @@
               
                 <li class="nav-header">Master Section</li>
                 <li
-                    class="nav-item {{ request()->is('admin/adBanner*') ? 'menu-open' : '' }} ">
+                    class="nav-item {{ request()->is('admin/adBanner*') || request()->is('admin/event*') || request()->is('admin/testimonial*') || request()->is('admin/aachivementbymemberdBanner*') || request()->is('admin/job*') || request()->is('admin/requirement*') || request()->is('admin/member*') || request()->is('admin/moms*') ? 'menu-open' : '' }} ">
                     <a href="#"
-                        class="nav-link {{ request()->is('admin/adBanner*') ? 'active' : '' }}">
+                        class="nav-link {{ request()->is('admin/adBanner*') || request()->is('admin/event*') || request()->is('admin/testimonial*') || request()->is('admin/aachivementbymemberdBanner*') || request()->is('admin/job*') || request()->is('admin/requirement*') || request()->is('admin/member*') || request()->is('admin/moms*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-school"></i>
                         <p>
                             Masters
@@ -69,9 +69,9 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('event-viewAny')
+                        @can('update-viewAny')
                             <li class="nav-item">
-                                <a href="{{ url('admin/event') }}" class="nav-link {{ request()->is('admin/event*') ? 'active' : '' }}">
+                                <a href="{{ url('admin/update') }}" class="nav-link {{ request()->is('admin/update*') ? 'active' : '' }}">
                                     <i class="fas fa-house-user nav-icon"></i>
                                     <p>Khadya Samaj Update</p>
                                 </a>
@@ -118,6 +118,23 @@
                                 </a>
                             </li>
                         @endcan
+                        @can('matrimonial-viewAny')
+                            <li class="nav-item">
+                                <a href="{{ url('admin/matrimonial') }}" class="nav-link {{ request()->is('admin/matrimonial*') ? 'active' : '' }}">
+                                    <i class="fas fa-house-user nav-icon"></i>
+                                    <p>Matrimonial</p>
+                                </a>
+                            </li>
+                        @endcan
+
+                        @can('mom-viewAny')
+                        <li class="nav-item">
+                            <a href="{{ url('admin/moms') }}" class="nav-link {{ request()->is('admin/moms*') ? 'active' : '' }}">
+                                <i class="fas fa-house-user nav-icon"></i>
+                                <p>MOM List</p>
+                            </a>
+                        </li>
+                    @endcan
                         
                     </ul>
                 </li>
@@ -155,13 +172,15 @@
                                 <li class="nav-item">
                                     <a href="{{ url('admin/event-bookings') }}" class="nav-link {{ request()->is('admin/event-bookings*') ? 'active' : '' }}">
                                         <i class="fas fa-house-user nav-icon"></i>
-                                        <p>Events</p>
+                                        <p>Events Booking</p>
                                     </a>
                                 </li>
                             @endcan
                         </ul>
                     </li>
                 @endif
+
+                
 
 
                 <li class="nav-header">System Section</li>

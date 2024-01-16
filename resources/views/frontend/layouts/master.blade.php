@@ -54,6 +54,8 @@
     @include('frontend/includes/footer')
     <!-- footer end -->
 
+    @include('frontend.layouts.payment-pop-up')
+
     <!-- preloader -->
     <div class="preloader">
         <div id="loader"></div>
@@ -89,7 +91,10 @@
     <script src="{{asset('/frontend/js/custom.js')}}"></script>
 
     @livewireScripts
+
+    @stack('livewire-scripts')
     
     @yield('scripts')
+    @yield('scriptss')
 </body>
 </html>

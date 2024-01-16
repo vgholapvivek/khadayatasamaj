@@ -15,6 +15,16 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $data = [
+            'matrimonial-viewAny',
+            'matrimonial-delete',
+            'matrimonial-view',
+            'matrimonial-edit',
+            'matrimonial-create',
+            'matrimonial-restore',
+            'matrimonial-forceDelete',
+            'matrimonial-update',
+            'matrimonial-store',
+            
             'event-viewAny',
             'event-delete',
             'event-view',
@@ -54,6 +64,16 @@ class PermissionTableSeeder extends Seeder
             'event_booking-forceDelete',
             'event_booking-update',
             'event_booking-store',
+
+            'mom-viewAny',
+            'mom-delete',
+            'mom-view',
+            'mom-edit',
+            'mom-create',
+            'mom-restore',
+            'mom-forceDelete',
+            'mom-update',
+            'mom-store',
 
         ];
 

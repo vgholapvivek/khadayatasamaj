@@ -7,33 +7,14 @@ use App\Providers\RouteServiceProvider;
 // use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Members;
+use App\Models\Member;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-
-    */
-
-    // use AuthenticatesUsers;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        $this->middleware('member')->except('memberLogout');
+       // $this->middleware('member')->except('memberLogout');
     }
 
     public function login(){
@@ -57,6 +38,7 @@ class LoginController extends Controller
             'email'   => 'required|email',
             'password' => 'required|min:6'
         ]);
+        
         if(auth()->guard('member')->attempt(array('email' => $requestData['email'], 'password' => $requestData['password'])))
         {
             return response()->json(['status'=>1,'message'=>" Congratulations You Login Successfully !!"]);
@@ -71,7 +53,7 @@ class LoginController extends Controller
     public function memberLogout(Request $request)
     {
         Auth::guard('member')->logout();
-        return redirect('/');
+        return redirect('/member/login');
     }
 
     public function registerThankyou(){

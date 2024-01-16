@@ -117,21 +117,45 @@ class StatusController extends Controller
         $id = $request->id;
         $type = $request->type;
         $page = $request->page;
-        
+        $note = $request->note;
        
-            $status = Status::where('name','$type')->value('id');
-           
+            $status = Status::where('name',$type)->value('id');
+            
+            if($page == 'AdBanner'){
+                $page = new AdBanner();
+            }
+            elseif($page == 'Achivementbymember'){
+                $page = new Achivementbymember();
+            }
+            elseif($page == 'Testimonial'){
+                $page = new Testimonial();
+            }
+            elseif($page == 'Job'){
+                $page = new Job();
+            }
+            elseif($page == 'Requirement'){
+               $page = new Requirement();
+            }
+            elseif($page == 'update'){
+                $page = new Update();
+            }
+            else{
+               $page = new Matrimonial();
+            }
+
             if(!empty($status))
             {
-               
-                if($page == 'AdBanner'){
-                    AdBanner::where('id',$id)->update(['member_status'=>$status]);
-                    
-                    echo 1;
-                }    
-                else{
-                    echo 0;
+                
+                if(!empty($note))
+                {
+                  $page::where('id',$id)->update(['member_status'=>$status,'rejected_reason'=>$note]);
                 }
+                else{
+                    
+                    $page::where('id',$id)->update(['member_status'=>$status]);
+                }  
+                  echo 1;
+               
             }    
             else{
                 echo 0;

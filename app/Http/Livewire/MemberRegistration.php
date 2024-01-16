@@ -8,6 +8,7 @@ use Livewire\Component;
 use Illuminate\Http\Request;
 use Session;
 use Hash;
+use Auth;
 
 class MemberRegistration extends Component
 {
@@ -19,9 +20,9 @@ class MemberRegistration extends Component
     {
         session()->start();
     }
+
     public function submit()
     {
-        $data = array();
         $validatedData = $this->validate([
             'membershipNo' => 'required|unique:members,membershipNo',
             'firstName' => 'required|min:2',
@@ -45,30 +46,26 @@ class MemberRegistration extends Component
         ]);       
 
         try
-        {  
+        { 
             if ($this->memberPhoto) 
             {                
-                    $path = public_path().'/sfrontend/images/members/';
-                   
-                    if(!File::isDirectory($path))
-                    {
-                        File::makeDirectory($path, 0777, true, true);
-                    }   
+                    $path = public_path('frontend/images/members/');
                    
                     $file = $this->memberPhoto;
-                    $imageName = $file->getClientOriginalName();
-                    $path = $this->memberPhoto->storeAs('frontend/images/members', $imageName, 'public');
-                    $validatedData['memberPhoto'] = $path;
+                    $imageName = time() . $file->getClientOriginalName();
+                    $path = $file->storeAs('frontend/images/members', $imageName,'real_public');
+                    $validatedData['memberPhoto'] = '/'.$path;
             }
             
-            $validatedData['password'] = Hash::make('password');
-            // $validatedData['status']   = 0;
+            $validatedData['password'] = Hash::make($this->password);
+            $validatedData['status']   = 0;
+
            
             if(Member::create($validatedData))
             {
-                Member::create($data);
                 session()->flash('message', 'Member successfully registered.');
-                return view('livewire.member-registration');
+                return redirect()->to('/member/register');
+                // return view('livewire.member-registration');
             }
         }
         catch(\Exception $e)

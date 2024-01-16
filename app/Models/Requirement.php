@@ -12,4 +12,15 @@ class Requirement extends Model
 
     protected $guarded = [];
 
+
+    public function images()
+    {
+        return $this->hasMany(RequirementImage::class, 'requirement_id', 'id');
+    }
+
+    public function adstatus()
+    {
+        return $this->belongsTo(Status::class, 'status', 'member_status');
+    }
+
 }

@@ -20,7 +20,6 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
         foreach ($guards as $guard) 
         {
             // dd($guard);
@@ -29,7 +28,7 @@ class RedirectIfAuthenticated
                 }
         
                 if ($guard == 'member' && Auth::guard($guard) == 'member') {
-                    return redirect('/dashboard');
+                    return redirect('/member/dashboard');
                 }
             
                // return $next($request);

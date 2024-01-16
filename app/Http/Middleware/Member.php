@@ -16,12 +16,14 @@ class Member
      */
     public function handle(Request $request, Closure $next)
     {
-        //dd(Auth::guard('member')->check());
-        dd(Auth::guard('member')->check());
+        if ($request->is('member/login') || $request->is('member/register')) {
+            return $next($request);
+        }
+
         if (Auth::guard('member')->check()) {
            return $next($request);
         }
-        return redirect('/login');
-        
+
+        return redirect('/member/login');        
     }
 }

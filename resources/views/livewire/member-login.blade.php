@@ -40,21 +40,6 @@
                    <p>Don't have account? <a wire:click.prevent="register"><u>Create an account?</u></a></p>
                 </div>
             </div>
-<<<<<<< HEAD
-=======
-            <div class="col-md-12">
-                            @if (session()->has('message'))
-                                <div class="alert alert-success">
-                                    {{ session('message') }}
-                                </div>
-                            @endif
-                            @if (session()->has('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-            </div>
->>>>>>> 02b0edeb1468256386439600e3519840685afe73
         </form>
     
 </div>

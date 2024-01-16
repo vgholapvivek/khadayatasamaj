@@ -12,4 +12,19 @@ class Achivementbymember extends Model
 
     protected $guarded = [];
 
+    public function images()
+    {
+        return $this->hasMany(AchievementImage::class, 'achievement_id', 'id');
+    }
+
+    public function adstatus()
+    {
+        return $this->belongsTo(Status::class, 'status', 'member_status');
+    }
+
+    public function memberStatusflag()
+    {
+        return $this->belongsTo('App\Models\Status','member_status',);
+    }
+
 }

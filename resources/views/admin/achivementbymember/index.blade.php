@@ -82,15 +82,14 @@
                                 @endif
                                 </td>
                                 <td>
-                                @if(!empty($item->member_status) && $item->member_status == 0)
-                                  {{@$item->memberStatusflag->name}}
-                                @elseif(!empty($item->member_status) && $item->member_status == 1)
-                                  {{@$item->memberStatusflag->name}}
-                                @elseif(!empty($item->member_status) && $item->member_status == 2)  
-                                  {{@$item->memberStatusflag->name}}
+                                @if($item->member_status == 0)
+                                  <button class="approval btn-success btn submitBtn" page="Achivementbymember" onclick="submitForm({{$item->id}},'Approved')">{{'Approved'}}</button>
+                                  <button class="reject btn-danger btn submitBtn" page="Achivementbymember" onclick="confirmReject({{$item->id}})">{{'Reject'}}</button>
+                                   
                                 @else
-                                   {{'-'}} 
+                                  <b>{{@$item->memberStatusflag->name}}</b>
                                 @endif
+                               
                                 </td>
                                 <td>
                                     @can('achivementbymember-edit')

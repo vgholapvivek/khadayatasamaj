@@ -15,7 +15,7 @@
                         @can('event-create')
                             <div>
                             <a href="{{  url('admin/update/create') }}" class="btn btn-primary btn-sm text-white mb-0 me-0"
-                                    type="button"> <i class="fa fa-plus"></i> Add new Event</a>
+                                    type="button"> <i class="fa fa-plus"></i> Add new Past Event</a>
                             </div>
                         @endcan
                     </ol>
