@@ -3,20 +3,34 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\AdBanner;
+use App\Models\Matrimonial;
+use Carbon\Carbon;
 
 class MetrimonialBannerList extends Component
 {
-    public $banners;
+    public   $maleMatrimonialBanners;
+    public $femaleMatrimonialBanners;
+
+    public $startDate;
+    public $endDate;
 
     public function mount()
     {
-        $this->loadBanners();
+        $this->loadDates();
+        $this->loadMatrimonialBanners();
     }
 
-    public function loadBanners()
+    public function loadDates()
     {
-        $this->banners = AdBanner::all();
+        $now = Carbon::now();
+        $this->startDate = $now->startOfWeek()->format('Y-m-d');
+        $this->endDate = $now->endOfWeek()->format('Y-m-d');
+    }
+
+    public function loadMatrimonialBanners()
+    {
+        $this->maleMatrimonialBanners = Matrimonial::where('gender','male')->where('status',1)->where('date','>=',$this->startDate)->where('date','<=',$this->endDate)->take(2)->get();
+        $this->femaleMatrimonialBanners = Matrimonial::where('gender','female')->where('status',1)->where('date','>=',$this->startDate)->where('date','<=',$this->endDate)->take(2)->get();
     }
 
     public function render()

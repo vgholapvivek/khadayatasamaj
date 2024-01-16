@@ -29,7 +29,7 @@ class MemberLogin extends Component
             'password' => 'required',
         ]);
 
-        if(Auth::guard('member')->attempt(['email' => $this->email, 'password' => $this->password])){ 
+        if(Auth::guard('member')->attempt(['email' => $this->email, 'password' => $this->password, 'status' => 1])){ 
                 return redirect('member/dashboard');
         }else{
             session()->flash('error', 'email and password are wrong.');
